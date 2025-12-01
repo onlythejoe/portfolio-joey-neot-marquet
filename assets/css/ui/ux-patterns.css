@@ -1,0 +1,59 @@
+/* UX Narrative Patterns — built from UX Layer primitives */
+
+.ux-hero-detail {
+    display: grid;
+    gap: var(--ea-grid-gap);
+    align-items: center;
+}
+
+@media (min-width: var(--ea-bp-md)) {
+    .ux-hero-detail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.ux-section-value-proof {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ea-space-lg);
+}
+
+.ux-section-value-proof .ux-proof-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
+    gap: var(--ea-grid-gap-tight);
+}
+
+.ux-manifesto {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ea-space-xl);
+}
+
+.ux-manifesto .ux-manifesto-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ea-space-sm);
+}
+
+.ux-case-study {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ea-space-lg);
+}
+
+.ux-case-study .ux-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
+    gap: var(--ea-grid-gap);
+}
+
+.ux-faq {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ea-space-md);
+}
+
+.ux-faq .ux-accordion {
+    gap: var(--ea-space-sm);
+}

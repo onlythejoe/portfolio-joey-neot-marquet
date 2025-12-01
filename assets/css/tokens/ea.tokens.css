@@ -8,6 +8,14 @@
     --ea-accent-1: #9df;
     --ea-accent-2: #4af;
     --ea-accent-3: #0ef;
+    --ea-surface-1: rgba(255,255,255,.03);
+    --ea-surface-2: rgba(255,255,255,.06);
+    --ea-surface-3: rgba(255,255,255,.1);
+
+    /* OPACITIES */
+    --ea-alpha-05: .05;
+    --ea-alpha-10: .1;
+    --ea-alpha-20: .2;
 
     /* TYPOGRAPHY */
     --ea-font-main: 'Inter', sans-serif;
@@ -16,16 +24,35 @@
     --ea-font-size-lg: 1.6rem;
     --ea-font-size-xl: 2.4rem;
     --ea-font-size-xxl: 4rem;
+    --ea-leading-sm: 1.3;
+    --ea-leading-md: 1.5;
+    --ea-leading-lg: 1.7;
+    --ea-weight-regular: 400;
+    --ea-weight-medium: 500;
+    --ea-weight-semibold: 600;
 
     /* LAYOUT */
-    --ea-max-width: 1200px;
-    --ea-pad: 2rem;
-    --ea-section-vspace: 6rem;
+    --ea-container-max: 75rem;
+    --ea-max-width: var(--ea-container-max);
+    --ea-max: var(--ea-container-max);
+    --ea-space-xs: .5rem;
+    --ea-space-sm: .75rem;
+    --ea-space-md: 1.25rem;
+    --ea-space-lg: 2rem;
+    --ea-space-xl: 3.5rem;
+    --ea-space-xxl: 6rem;
+    --ea-pad: var(--ea-space-lg);
+    --ea-section-vspace: var(--ea-space-xxl);
+    --ea-grid-gap: var(--ea-space-lg);
+    --ea-grid-gap-tight: var(--ea-space-md);
+    --ea-grid-col-min: 16rem;
 
     /* RADIUS */
-    --ea-radius-sm: 6px;
-    --ea-radius-md: 12px;
-    --ea-radius-lg: 24px;
+    --ea-radius-xs: .25rem;
+    --ea-radius-sm: .375rem;
+    --ea-radius-md: .75rem;
+    --ea-radius-lg: 1.5rem;
+    --ea-radius-xl: 2rem;
 
     /* SHADOWS */
     --ea-shadow-soft: 0 0 20px rgba(255,255,255,.08);
@@ -34,4 +61,17 @@
     --ea-dur-fast: .25s;
     --ea-dur-normal: .45s;
     --ea-dur-slow: .75s;
+    --ea-ease-standard: cubic-bezier(.25,.46,.45,.94);
+    --ea-ease-emph: cubic-bezier(.4,0,.2,1);
+
+    /* BREAKPOINTS */
+    --ea-bp-sm: 40rem;
+    --ea-bp-md: 56rem;
+    --ea-bp-lg: 72rem;
+    --ea-bp-xl: 90rem;
+
+    /* Z-LAYERS */
+    --ea-layer-base: 1;
+    --ea-layer-overlay: 10;
+    --ea-layer-modal: 100;
 }
