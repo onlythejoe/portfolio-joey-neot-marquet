@@ -1,4 +1,9 @@
 :root {
-    --ea-max: 1200px;
-    --ea-pad: 2rem;
+    color-scheme: dark;
+}
+
+body {
+    background: var(--ea-bg);
+    color: var(--ea-fg);
+    font-family: var(--ea-font-main);
 }

@@ -33,8 +33,9 @@
 
     /* LAYOUT */
     --ea-container-max: 75rem;
-    --ea-max-width: var(--ea-container-max);
-    --ea-max: var(--ea-container-max);
+    --ea-layout-max: var(--ea-container-max);
+    --ea-max-width: var(--ea-layout-max); /* legacy alias */
+    --ea-max: var(--ea-layout-max);       /* legacy alias */
     --ea-space-xs: .5rem;
     --ea-space-sm: .75rem;
     --ea-space-md: 1.25rem;
@@ -43,6 +44,7 @@
     --ea-space-xxl: 6rem;
     --ea-pad: var(--ea-space-lg);
     --ea-section-vspace: var(--ea-space-xxl);
+    --ea-view-height: 80vh;
     --ea-grid-gap: var(--ea-space-lg);
     --ea-grid-gap-tight: var(--ea-space-md);
     --ea-grid-col-min: 16rem;

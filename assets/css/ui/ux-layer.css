@@ -298,6 +298,17 @@
     }
 }
 
+@media (max-width: calc(var(--ea-bp-md) - 0.02px)) {
+    .ux-grid-2,
+    .ux-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .ux-side-note {
+        grid-template-columns: 1fr;
+        gap: var(--ea-space-md);
+    }
+}
+
 /* CTA amélioré */
 .ux-cta {
   display: inline-block;

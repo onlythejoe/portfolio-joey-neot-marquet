@@ -5,9 +5,9 @@
 - SEO minimal : meta description dynamique par page, titre h1 par page, canonical statique. [✔️ DONE — 2025-12-01]
 
 **Sprint 2 — Design System unifié**
-- Fusion tokens/theme (échelle typographique, espaces, z-index, couleurs) et suppression des doublons EA vs UX components.
-- Structurer UX patterns : hero, manifesto, case-study, FAQ, contact → variantes responsives, CTA contextualisés.
-- Revoir responsive layout (abandon 100vh strict sur mobile, grilles fluides, padding adaptatif).
+- Fusion tokens/theme (échelle typographique, espaces, z-index, couleurs) et suppression des doublons EA vs UX components. [✔️ DONE — 2025-12-01]
+- Structurer UX patterns : hero, manifesto, case-study, FAQ, contact → variantes responsives, CTA contextualisés. [✔️ DONE — 2025-12-01]
+- Revoir responsive layout (abandon 100vh strict sur mobile, grilles fluides, padding adaptatif). [✔️ DONE — 2025-12-01]
 
 **Sprint 3 — Router/Loader v2**
 - Cache des sections fetchées, abortController sur navigation, chargement parallèle des sections, gestion d’erreurs user-friendly.
