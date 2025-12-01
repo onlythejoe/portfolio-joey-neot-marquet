@@ -1,0 +1,5 @@
+.ea-container {
+    width:min(var(--ea-max), 90%);
+    margin-inline:auto;
+    padding:var(--ea-pad) 0;
+}
