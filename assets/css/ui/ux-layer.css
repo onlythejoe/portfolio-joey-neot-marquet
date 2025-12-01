@@ -324,3 +324,11 @@
   flex-wrap: wrap;
   gap: var(--ea-space-xs);
 }
+
+.ea-footer {
+    padding: var(--ea-space-lg) 0;
+    text-align: center;
+    color: var(--ea-fg-dim);
+    font-family: var(--ea-font-main);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}

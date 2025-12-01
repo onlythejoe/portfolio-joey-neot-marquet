@@ -21,18 +21,6 @@
     pointer-events:auto;
 }
 
-.ea-menu-left {
-    position:absolute;
-    left:2rem;
-    top:50%;
-    transform:translateY(-50%);
-}
-
-.ea-logo {
-    font-size:1.2rem;
-    font-weight:600;
-}
-
 /* BULLE */
 .ea-menu-list {
     display:flex;
@@ -85,8 +73,8 @@
 
     /* Compression de la bulle */
     .ea-menu {
-        justify-content: flex-start;
-        padding-left: calc(2rem + 60px); /* compense logo */
+        justify-content: center;
+        padding-left: 0;
     }
 }
 
