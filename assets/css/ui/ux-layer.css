@@ -71,6 +71,8 @@
 .ux-link:hover,
 .ux-link:focus-visible {
     color: var(--ea-accent-3);
+    outline: 2px solid var(--ea-accent-2);
+    outline-offset: 4px;
 }
 
 .ux-divider {
@@ -130,6 +132,8 @@
     transform: translateY(-.125rem);
     border-color: var(--ea-accent-2);
     background: rgba(255,255,255,var(--ea-alpha-05));
+    outline: 2px solid var(--ea-accent-2);
+    outline-offset: 3px;
 }
 
 .ux-metric,
@@ -316,6 +320,13 @@
 .ux-cta:active {
   transform: translateY(0px);
   box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ux-cta,
+  .ux-link {
+    transition: none;
+  }
 }
 
 /* Tags container */

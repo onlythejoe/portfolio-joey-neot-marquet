@@ -161,3 +161,14 @@
 .ea-mode-detail #ea-layout {
     grid-template-columns: 1fr;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    #ea-page-content {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+    }
+    .ea-section {
+        scroll-snap-align: unset;
+        scroll-snap-stop: unset;
+    }
+}

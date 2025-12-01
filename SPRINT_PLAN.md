@@ -1,0 +1,25 @@
+**Sprint 1 — Stabilisation technique**
+- Corriger imports CSS (contact.css manquant, doublon head/master), aligner une seule définition de layout `.ea-container/.ea-section/.ea-view`. [✔️ DONE — 2025-12-01]
+- Créer une feuille contact.css minimale et remplir les feuilles pages vides ou arrêter leur import. [✔️ DONE — 2025-12-01]
+- A11y rapide : focus styles visibles, `aria-label` nav, `rel="noopener"`, `prefers-reduced-motion` sur animations/scroll-snap. [✔️ DONE — 2025-12-01]
+- SEO minimal : meta description dynamique par page, titre h1 par page, canonical statique. [✔️ DONE — 2025-12-01]
+
+**Sprint 2 — Design System unifié**
+- Fusion tokens/theme (échelle typographique, espaces, z-index, couleurs) et suppression des doublons EA vs UX components.
+- Structurer UX patterns : hero, manifesto, case-study, FAQ, contact → variantes responsives, CTA contextualisés.
+- Revoir responsive layout (abandon 100vh strict sur mobile, grilles fluides, padding adaptatif).
+
+**Sprint 3 — Router/Loader v2**
+- Cache des sections fetchées, abortController sur navigation, chargement parallèle des sections, gestion d’erreurs user-friendly.
+- Progress-nav throttle + resize observer; menu state persistant; scroll engine compatible mobile.
+- Enrichir SEO (OG/Twitter, meta per page), analytics hooks optionnels.
+
+**Sprint 4 — Contenus & DA**
+- Réécrire les pages clés (Home, Portfolio, Contact) avec preuves, visuels (ou placeholders réels) et microcopy claire.
+- Harmoniser hiérarchie Hn, raccourcir les blocs, utiliser listes/metrics/quotes parcimonieusement.
+- Activer un pipeline de build léger (Vite/Rollup) pour bundler/minifier CSS/JS, gérer les versions, préparer un hébergement.
+
+**Sprint 5 — Perf & QA**
+- Mesures Lighthouse (perf/a11y/best practices/SEO), bench bundle size, audit scroll-snap sur mobile.
+- Tests fonctionnels simples (open/back, popstate, navigation menu, fallback offline) + linters (stylelint/eslint minimal).
+- Ajuster animations (GPU-friendly, pas de layout thrash), lazy-load assets visuels quand ajoutés.

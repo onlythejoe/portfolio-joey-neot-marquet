@@ -90,6 +90,11 @@
     filter:brightness(1.05); /* micro highlight */
 }
 
+.ea-menu-link:focus-visible {
+    outline:2px solid var(--ea-accent-2);
+    outline-offset:4px;
+}
+
 /* ========================================================= */
 /* EA MENU — REFACTOR PHASE 3.5 (safe, non-breaking)         */
 /* ========================================================= */

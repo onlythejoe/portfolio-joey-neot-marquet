@@ -5,3 +5,10 @@
 @keyframes eaFadeIn {
     to { opacity:1; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .ea-fade-in {
+        animation: none;
+        opacity: 1;
+    }
+}
