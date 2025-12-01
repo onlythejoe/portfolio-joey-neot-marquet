@@ -1,6 +1,6 @@
 import { injectGlobalComponents } from "./composer-global.js";
 import { composePage } from "../composer/composer.js";
-import { EVENTS } from "./constants.js";
+import { EVENTS, SELECTORS } from "./constants.js";
 import "./progress-nav.js";
 import "./scroll-engine.js";
 import "./menu.js";
@@ -14,12 +14,27 @@ function resolveSection() {
     return new URLSearchParams(window.location.search).get("section");
 }
 
+let currentController = null;
+
 async function load() {
+    if (currentController) currentController.abort();
+    currentController = new AbortController();
+    const { signal } = currentController;
+
     const page = resolvePage();
     const detailSection = resolveSection();
-    await injectGlobalComponents();
-    await composePage(page, detailSection);
-    window.dispatchEvent(new Event(EVENTS.pageLoaded));
+    try {
+        await injectGlobalComponents();
+        await composePage(page, detailSection, { signal });
+        if (signal.aborted) return;
+        window.dispatchEvent(new CustomEvent(EVENTS.pageLoaded, { detail: { page, section: detailSection } }));
+        window.dispatchEvent(new CustomEvent("ea-analytics", { detail: { page, section: detailSection } }));
+    } catch (err) {
+        if (signal.aborted) return;
+        console.error("EA Loader error", err);
+        const container = document.querySelector(SELECTORS.pageContent);
+        if (container) container.innerHTML = "<section class='ea-section'><div class='ea-container'><p>Chargement interrompu. Réessayez.</p></div></section>";
+    }
 }
 
 window.addEventListener("DOMContentLoaded", load);

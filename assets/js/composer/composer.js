@@ -2,6 +2,8 @@ import { getPartialUrl } from "../core/resolver.js";
 import { loadPagesConfig } from "../core/config-cache.js";
 import { SELECTORS, CLASSES } from "../core/constants.js";
 
+const sectionCache = new Map();
+
 function updateUrl(page, sectionId) {
     const url = new URL(window.location.href);
     url.searchParams.set("page", page);
@@ -75,13 +77,29 @@ function createSectionController(container, page) {
     return { applySectionState };
 }
 
-async function loadSection(page, section) {
+async function loadSection(page, section, signal) {
     const url = getPartialUrl(page, section);
-    const res = await fetch(url);
-    return res.ok ? res.text() : `<section class='ea-section ea-missing'><h2>Missing: ${section}</h2></section>`;
+    const cacheKey = `${page}/${section}`;
+    if (sectionCache.has(cacheKey)) return sectionCache.get(cacheKey);
+
+    const promise = fetch(url, { signal })
+        .then((res) => (res.ok ? res.text() : null))
+        .catch(() => null)
+        .then((html) => {
+            if (signal?.aborted) throw new DOMException("aborted", "AbortError");
+            if (!html) {
+                return `<section class='ea-section ea-missing'><div class='ea-container'><p>Section indisponible : ${section}</p></div></section>`;
+            }
+            return html;
+        });
+
+    sectionCache.set(cacheKey, promise);
+    promise.catch(() => sectionCache.delete(cacheKey));
+    return promise;
 }
 
-export async function composePage(page, detailSection = null) {
+export async function composePage(page, detailSection = null, options = {}) {
+    const { signal } = options;
     const container = document.querySelector(SELECTORS.pageContent);
     container.innerHTML = "<div class='ea-loading'>Chargement…</div>";
 
@@ -93,9 +111,17 @@ export async function composePage(page, detailSection = null) {
         return;
     }
 
-    let html = "";
-    for (const s of meta.sections) html += await loadSection(page, s);
-    container.innerHTML = html;
+    try {
+        const sectionsHtml = await Promise.all(
+            meta.sections.map((s) => loadSection(page, s, signal))
+        );
+        if (signal?.aborted) return;
+        container.innerHTML = sectionsHtml.join("");
+    } catch (err) {
+        if (signal?.aborted) return;
+        container.innerHTML = `<section class='ea-section'><div class='ea-container'><p>Erreur de chargement. Merci de réessayer.</p></div></section>`;
+        throw err;
+    }
 
     const controller = createSectionController(container, page);
     controller.applySectionState(detailSection);

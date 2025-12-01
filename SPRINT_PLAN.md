@@ -10,9 +10,9 @@
 - Revoir responsive layout (abandon 100vh strict sur mobile, grilles fluides, padding adaptatif). [✔️ DONE — 2025-12-01]
 
 **Sprint 3 — Router/Loader v2**
-- Cache des sections fetchées, abortController sur navigation, chargement parallèle des sections, gestion d’erreurs user-friendly.
-- Progress-nav throttle + resize observer; menu state persistant; scroll engine compatible mobile.
-- Enrichir SEO (OG/Twitter, meta per page), analytics hooks optionnels.
+- Cache des sections fetchées, abortController sur navigation, chargement parallèle des sections, gestion d’erreurs user-friendly. [✔️ DONE — 2025-12-01]
+- Progress-nav throttle + resize observer; menu state persistant; scroll engine compatible mobile. [✔️ DONE — 2025-12-01]
+- Enrichir SEO (OG/Twitter, meta per page), analytics hooks optionnels. [✔️ DONE — 2025-12-01]
 
 **Sprint 4 — Contenus & DA**
 - Réécrire les pages clés (Home, Portfolio, Contact) avec preuves, visuels (ou placeholders réels) et microcopy claire.

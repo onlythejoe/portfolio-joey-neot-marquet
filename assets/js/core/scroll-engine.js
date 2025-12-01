@@ -4,7 +4,8 @@
 import { SELECTORS, CLASSES, EVENTS } from "./constants.js";
 
 let teardown = null;
-const MENU_THRESHOLD = 50;
+const MENU_THRESHOLD_DESKTOP = 50;
+const MENU_THRESHOLD_MOBILE = 20;
 
 export function initScrollEngine() {
     if (typeof teardown === "function") teardown();
@@ -15,9 +16,13 @@ export function initScrollEngine() {
 
     if (!container || !menu) return;
 
+    function currentThreshold() {
+        return window.innerWidth < 720 ? MENU_THRESHOLD_MOBILE : MENU_THRESHOLD_DESKTOP;
+    }
+
     function updateMenuVisibility() {
         const y = container.scrollTop;
-        if (y < MENU_THRESHOLD) {
+        if (y < currentThreshold()) {
             menu.classList.remove(CLASSES.menuVisible);
         } else {
             menu.classList.add(CLASSES.menuVisible);

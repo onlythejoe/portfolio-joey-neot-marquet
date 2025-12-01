@@ -2,6 +2,18 @@ import { SELECTORS, CLASSES, EVENTS } from "./constants.js";
 
 let teardown = null;
 
+function throttleRaf(fn) {
+    let ticking = false;
+    return () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            fn();
+            ticking = false;
+        });
+    };
+}
+
 function reset() {
     if (typeof teardown === "function") teardown();
     teardown = null;
@@ -27,7 +39,7 @@ export function initProgressNav() {
         return d;
     });
 
-    function updateDots() {
+    const updateDots = throttleRaf(() => {
         const h = window.innerHeight;
         let active = 0;
 
@@ -39,11 +51,17 @@ export function initProgressNav() {
         dots.forEach((d, i) =>
             d.classList.toggle(CLASSES.progressDotActive, i === active)
         );
-    }
+    });
+
+    const resizeObserver = new ResizeObserver(updateDots);
+    sections.forEach((s) => resizeObserver.observe(s));
 
     updateDots();
     content.addEventListener("scroll", updateDots, { passive: true });
-    teardown = () => content.removeEventListener("scroll", updateDots);
+    teardown = () => {
+        content.removeEventListener("scroll", updateDots);
+        resizeObserver.disconnect();
+    };
 }
 
 window.addEventListener(EVENTS.pageLoaded, initProgressNav);

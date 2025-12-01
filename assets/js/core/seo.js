@@ -7,6 +7,7 @@ import { loadPagesConfig } from "./config-cache.js";
 import { EVENTS } from "./constants.js";
 
 const FALLBACK_DESCRIPTION = "Portfolio Joey-Néot Marquet — creative technologist, design × code × systèmes.";
+const SITE_NAME = "Electronic Artefacts";
 
 function ensureMeta(name) {
     let tag = document.querySelector(`meta[name="${name}"]`);
@@ -18,23 +19,35 @@ function ensureMeta(name) {
     return tag;
 }
 
+function ensureProperty(property) {
+    let tag = document.querySelector(`meta[property="${property}"]`);
+    if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute("property", property);
+        document.head.appendChild(tag);
+    }
+    return tag;
+}
+
 export async function applySeo(page) {
     const config = await loadPagesConfig();
     const meta = config[page];
 
-    if (!meta) {
-        document.title = "Electronic Artefacts";
-        ensureMeta("description").setAttribute("content", FALLBACK_DESCRIPTION);
-        return;
-    }
+    const title = meta ? `${SITE_NAME} — ${meta.title}` : SITE_NAME;
+    const description = (meta && meta.description) || FALLBACK_DESCRIPTION;
 
-    document.title = `Electronic Artefacts — ${meta.title}`;
-    const description = meta.description || FALLBACK_DESCRIPTION;
+    document.title = title;
     ensureMeta("description").setAttribute("content", description);
+    ensureProperty("og:title").setAttribute("content", title);
+    ensureProperty("og:site_name").setAttribute("content", SITE_NAME);
+    ensureProperty("og:description").setAttribute("content", description);
+    ensureProperty("twitter:title").setAttribute("content", title);
+    ensureMeta("twitter:card").setAttribute("content", "summary");
+    ensureMeta("twitter:description").setAttribute("content", description);
 }
 
-window.addEventListener(EVENTS.pageLoaded, () => {
+window.addEventListener(EVENTS.pageLoaded, (evt) => {
     const params = new URLSearchParams(window.location.search);
-    const page = params.get("page") || "home";
+    const page = params.get("page") || evt?.detail?.page || "home";
     applySeo(page);
 });

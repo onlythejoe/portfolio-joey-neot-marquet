@@ -6,11 +6,12 @@ import { EVENTS, SELECTORS, CLASSES } from "./constants.js";
 
 function getCurrentPage() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("page") || "home";
+    return params.get("page") || sessionStorage.getItem("ea:last-page") || "home";
 }
 
 export function activateMenu() {
     const current = getCurrentPage();
+    sessionStorage.setItem("ea:last-page", current);
     const links = document.querySelectorAll(SELECTORS.menuLink);
 
     links.forEach(link => {
