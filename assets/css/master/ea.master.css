@@ -63,3 +63,13 @@
 .ea-progress-dot.hidden {
     opacity: 0;
 }
+
+@media (max-width: var(--ea-bp-md)) {
+    #ea-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    #ea-progress-nav {
+        display: none;
+    }
+}

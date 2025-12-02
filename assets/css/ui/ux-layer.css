@@ -22,12 +22,14 @@
     line-height: var(--ea-leading-lg);
     font-weight: var(--ea-weight-medium);
     color: var(--ea-fg-soft);
+    max-width: 78ch;
 }
 
 .ux-paragraph {
     font-size: var(--ea-font-size-md);
     line-height: var(--ea-leading-md);
     color: var(--ea-fg);
+    max-width: 78ch;
 }
 
 .ux-label {
@@ -306,6 +308,46 @@
     .ux-side-note {
         grid-template-columns: 1fr;
         gap: var(--ea-space-md);
+    }
+}
+
+@media (max-width: var(--ea-bp-md)) {
+    .ux-title {
+        font-size: clamp(2.1rem, 5vw, 2.6rem);
+        line-height: 1.25;
+    }
+    .ux-subtitle {
+        font-size: clamp(1.45rem, 4.6vw, 2rem);
+        line-height: 1.35;
+    }
+    .ux-lead {
+        font-size: 1.05rem;
+        line-height: 1.55;
+        max-width: 64ch;
+    }
+    .ux-paragraph {
+        font-size: .98rem;
+        line-height: 1.6;
+        max-width: 64ch;
+    }
+    .ux-stack,
+    .ea-stack {
+        gap: var(--ea-space-md);
+    }
+    .ux-grid-2,
+    .ux-grid-3 {
+        gap: var(--ea-space-md);
+    }
+    .ux-block {
+        gap: var(--ea-space-xs);
+    }
+    .ux-highlight,
+    .ux-quote,
+    .ux-note {
+        padding: var(--ea-space-md);
+    }
+    .ux-section-group {
+        gap: var(--ea-space-lg);
     }
 }
 

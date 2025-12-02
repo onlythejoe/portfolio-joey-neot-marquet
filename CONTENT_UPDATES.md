@@ -1,3 +1,16 @@
+# Sprint 7 — Mobile responsive & micro-copy
+
+Pages travaillées
+- `assets/css/ui/ux-layer.css`, `assets/css/master/sections.master.css`, `assets/css/master/ea.master.css` : breakpoints mobile enrichis (typographies clampées, padding ajusté, grids resserrées) pour éviter les débordements et conserver l’alignement des sections.
+- `pages/about/index.html`, `pages/about/bio.html` : previews et intros raccourcies, storytelling conservé mais plus lisible sur mobile.
+- `pages/vision/manifeste.html` : manifeste condensé (preview + sections) pour tenir sur mobile sans perdre la voix.
+- `pages/expertises/index.html` : nouvelle preview et détail concis (design system, architecture front, prototypage, pilotage produit).
+- `pages/contact/contact.html` : intro raccourcie pour tenir en deux lignes mobile.
+
+Principes respectés
+- DA desktop intacte, scroll-snap préservé sur desktop, ajustements ciblés sous `--ea-bp-md`.
+- Voix et ton conservés, pas d’animations modifiées, aucune structure desktop altérée.
+
 # Sprint 4 — Contenus & DA
 
 Pages travaillées
