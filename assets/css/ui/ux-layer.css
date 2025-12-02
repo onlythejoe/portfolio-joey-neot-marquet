@@ -60,15 +60,16 @@
 .ux-tag {
     display: inline-flex;
     align-items: center;
-    gap: var(--ea-space-xs);
-    padding: calc(var(--ea-space-xs) * .65) var(--ea-space-sm);
-    border-radius: var(--ea-radius-lg);
+    gap: clamp(0.6vw, 1vw, 1.4vw);
+    padding: clamp(0.6vw, 1vw, 1.4vw) clamp(1.4vw, 2vw, 2.8vw);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
     background: var(--ea-surface-2);
     color: var(--ea-fg-soft);
     font-size: clamp(.8rem, 1.5vw, var(--ea-font-size-sm));
     line-height: var(--ea-leading-sm);
     white-space: nowrap;
     margin-inline: 0;
+    overflow: visible;
 }
 
 .ux-keyword {
@@ -100,21 +101,26 @@
 .ux-block {
     display: flex;
     flex-direction: column;
-    gap: var(--ea-space-sm);
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: 0;
     align-items: flex-start;
     text-align: left;
-    overflow-x: hidden;
+    padding: clamp(2vw, 3vw, 4vw);
+    background: rgba(255,255,255,0.025);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
+    overflow: visible;
 }
 
 .ea-content--detail .ux-stack,
 .ea-content--detail .ux-block {
-    padding: clamp(3vw, 4vw, 5vw);
     max-width: 100%;
-    margin-inline: auto;
-    overflow-x: hidden;
+    width: 100%;
+    margin-inline: 0;
+    overflow: visible;
 }
 
 .ux-overview-btn,
@@ -125,51 +131,64 @@
 }
 
 .ux-highlight {
-    padding: clamp(1.25rem, 3vw, var(--ea-space-lg));
-    border-radius: var(--ea-radius-lg);
-    background: var(--ea-surface-2);
-    border: .0625rem solid var(--ea-surface-3);
+    padding: clamp(2vw, 3vw, 4vw);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
+    background: rgba(255,255,255,0.025);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: 0;
     text-align: left;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 .ux-quote {
-    padding: clamp(1rem, 2.4vw, var(--ea-space-md)) clamp(1.4rem, 3vw, var(--ea-space-lg));
-    border-left: .125rem solid var(--ea-accent-2);
-    background: var(--ea-surface-1);
-    border-radius: var(--ea-radius-md);
+    padding: clamp(2vw, 3vw, 4vw);
+    border-left: none;
+    background: rgba(255,255,255,0.03);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.06);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
     color: var(--ea-fg);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: 0;
     text-align: left;
+    overflow: visible;
 }
 
 .ux-note {
-    padding: clamp(1rem, 2.4vw, var(--ea-space-md));
-    border-radius: var(--ea-radius-md);
-    background: var(--ea-surface-1);
+    padding: clamp(2vw, 3vw, 4vw);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
+    background: rgba(255,255,255,0.025);
     color: var(--ea-fg-soft);
-    border: .0625rem solid var(--ea-surface-2);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: 0;
     text-align: left;
-    overflow-x: hidden;
+    overflow: visible;
+}
+
+.ux-pattern {
+    padding: clamp(2vw, 3vw, 4vw);
+    background: rgba(255,255,255,0.025);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
+    overflow: visible;
 }
 
 .ux-cta {
     display: inline-flex;
     align-items: center;
-    gap: var(--ea-space-sm);
-    padding: var(--ea-space-sm) var(--ea-space-md);
-    border-radius: 999rem;
-    border: .0625rem solid var(--ea-surface-3);
+    gap: clamp(1vw, 1.4vw, 1.8vw);
+    padding: clamp(1vw, 1.4vw, 1.8vw) clamp(2vw, 3vw, 4vw);
+    border-radius: clamp(0.6vw, 0.8vw, 1.4vw);
+    border: clamp(0.08vw, 0.12vw, 0.2vw) solid rgba(255,255,255,0.12);
     color: var(--ea-fg);
-    background: var(--ea-surface-2);
+    background: rgba(255,255,255,0.06);
     justify-content: center;
     margin-inline: 0;
     text-align: left;
@@ -178,11 +197,12 @@
         transform var(--ea-dur-fast) var(--ea-ease-standard),
         border-color var(--ea-dur-fast) var(--ea-ease-standard),
         background var(--ea-dur-fast) var(--ea-ease-standard);
+    overflow: visible;
 }
 
 .ux-cta:hover,
 .ux-cta:focus-visible {
-    transform: translateY(-.125rem);
+    transform: translateY(-0.3vw);
     border-color: var(--ea-accent-2);
     background: rgba(255,255,255,var(--ea-alpha-05));
     outline: 2px solid var(--ea-accent-2);
@@ -212,18 +232,18 @@
 
 .ux-card,
 .ea-card {
-    background: var(--ea-surface-1);
-    border: .0625rem solid var(--ea-surface-2);
-    border-radius: var(--ea-radius-lg);
-    padding: var(--ea-space-lg);
+    background: rgba(255,255,255,0.025);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.07);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
+    padding: clamp(2vw, 3vw, 4vw);
     box-shadow: var(--ea-shadow-soft);
     display: flex;
     flex-direction: column;
-    gap: var(--ea-space-sm);
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: 0;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 .ux-list {
@@ -268,7 +288,7 @@
 .ea-stack {
     display: flex;
     flex-direction: column;
-    gap: clamp(var(--ea-space-sm), 1.5vw, var(--ea-space-md));
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: 0;
@@ -276,33 +296,71 @@
     padding-inline-end: var(--ea-pad-inline);
     align-items: flex-start;
     text-align: left;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 .ux-grid-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(50vw, 95%), 1fr));
-    gap: clamp(3vw, 4vw, 6vw);
+    grid-template-columns: repeat(auto-fit, minmax(min(52vw, 94%), 1fr));
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
     width: 100%;
     max-width: var(--ea-content-wide, var(--ea-content-max));
     margin-inline: 0;
     padding-inline-start: 0;
     padding-inline-end: var(--ea-pad-inline);
     justify-items: start;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 .ux-grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(50vw, 95%), 1fr));
-    gap: clamp(3vw, 4vw, 6vw);
+    grid-template-columns: repeat(auto-fit, minmax(min(52vw, 94%), 1fr));
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
     width: 100%;
     max-width: var(--ea-content-wide, var(--ea-content-max));
     margin-inline: 0;
     padding-inline-start: 0;
     padding-inline-end: var(--ea-pad-inline);
     justify-items: start;
-    overflow-x: hidden;
+    overflow: visible;
+}
+
+/* DETAIL: flatten widths/paddings and prevent clipping */
+.ea-content--detail .ux-grid-2,
+.ea-content--detail .ux-grid-3 {
+    max-width: 100%;
+    width: 100%;
+    margin-inline: 0;
+    overflow: visible;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
+}
+
+.ea-content--detail .ux-section-group,
+.ea-content--detail .ux-side-note,
+.ea-content--detail .ux-timeline,
+.ea-content--detail .ux-accordion,
+.ea-content--detail .ux-highlight,
+.ea-content--detail .ux-quote,
+.ea-content--detail .ux-note,
+.ea-content--detail .ux-card,
+.ea-content--detail .ux-gallery-slot,
+.ea-content--detail .ux-case-study,
+.ea-content--detail .ux-case-study .ux-case-grid,
+.ea-content--detail .ux-tags,
+.ea-content--detail .ux-hero-detail,
+.ea-content--detail .ux-section-value-proof,
+.ea-content--detail .ux-section-value-proof .ux-proof-list,
+.ea-content--detail .ux-manifesto,
+.ea-content--detail .ux-faq,
+.ea-content--detail .ux-faq .ux-accordion,
+.ea-content--detail .ux-timeline .ux-timeline-item,
+.ea-content--detail .ux-accordion .ux-acc-item,
+.ea-content--detail .ux-accordion .ux-acc-content {
+    max-width: 100%;
+    width: 100%;
+    margin-inline: 0;
+    overflow: visible;
 }
 
 .ux-section-group {
@@ -419,7 +477,7 @@
 @media (max-width: var(--ea-bp-md)) {
     .ux-stack,
     .ea-stack {
-        gap: var(--ea-space-sm);
+        gap: clamp(1.5vw, 2.5vw, 3.5vw);
         max-width: 100%;
     }
     .ux-lead,
@@ -429,22 +487,23 @@
     }
     .ux-grid-2,
     .ux-grid-3 {
-        gap: var(--ea-space-md);
-    }
-    .ux-block {
-        gap: var(--ea-space-xs);
-    }
-    .ux-highlight,
-    .ux-quote,
-    .ux-note {
-        padding: calc(var(--ea-space-md) * .85);
+        gap: clamp(1.5vw, 2.5vw, 3.5vw);
     }
     .ux-section-group {
-        gap: var(--ea-space-lg);
+        gap: clamp(1.5vw, 2.5vw, 3.5vw);
     }
     .ux-tag {
         font-size: clamp(.78rem, 2.4vw, .95rem);
-        padding: calc(var(--ea-space-xs) * .55) var(--ea-space-xs);
+    }
+
+    .ux-block,
+    .ux-card,
+    .ux-quote,
+    .ux-note,
+    .ux-stack,
+    .ux-tags {
+        max-width: 100%;
+        padding: clamp(3vw, 4vw, 5vw);
     }
 }
 
@@ -454,11 +513,11 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: clamp(.65rem, 2.4vw, var(--ea-space-sm)) clamp(1rem, 3vw, var(--ea-space-md));
-  border-radius: var(--ea-radius-md);
+  padding: clamp(1vw, 1.4vw, 1.8vw) clamp(2vw, 3vw, 4vw);
+  border-radius: clamp(0.6vw, 0.8vw, 1.4vw);
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  margin-bottom: var(--ea-space-sm);
+  border: clamp(0.08vw, 0.12vw, 0.2vw) solid rgba(255,255,255,0.12);
+  margin-bottom: clamp(1vw, 1.4vw, 1.8vw);
   margin-inline: 0;
   text-decoration: none;
   color: var(--ea-fg);
@@ -468,15 +527,16 @@
   text-align: left;
   max-width: 100%;
   align-self: flex-start;
+  overflow: visible;
 }
 .ux-cta:hover {
   background: rgba(255,255,255,0.12);
   border-color: var(--ea-accent-2);
-  transform: translateY(-2px);
+  transform: translateY(-0.4vw);
   box-shadow: 0 0 12px rgba(0,200,255,0.2);
 }
 .ux-cta:active {
-  transform: translateY(0px);
+  transform: translateY(0);
   box-shadow: none;
 }
 
@@ -491,7 +551,7 @@
 .ux-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ea-space-xs);
+  gap: clamp(1.5vw, 2.5vw, 3.5vw);
   justify-content: flex-start;
   align-items: center;
   width: 100%;
@@ -499,6 +559,14 @@
   margin-inline: 0;
   padding-inline-start: 0;
   padding-inline-end: var(--ea-pad-inline);
+  overflow: visible !important;
+  transform-origin: center;
+}
+
+.ea-content--detail .ux-tags,
+.ea-content--detail .ux-block,
+.ea-content--detail .ux-stack {
+  overflow: visible;
 }
 
 .ea-footer {

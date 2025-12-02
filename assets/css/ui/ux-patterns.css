@@ -54,11 +54,15 @@
 .ux-case-study {
     display: flex;
     flex-direction: column;
-    gap: var(--ea-space-lg);
+    gap: clamp(1.5vw, 2.5vw, 3.5vw);
     width: 100%;
     max-width: var(--ea-content-max);
     margin-inline: auto;
-    padding-inline: var(--ea-pad-inline);
+    padding: clamp(2vw, 3vw, 4vw);
+    background: rgba(255,255,255,0.025);
+    border: clamp(0.08vw, 0.12vw, 0.16vw) solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(6px);
+    border-radius: clamp(0.8vw, 1vw, 1.6vw);
 }
 
 .ux-case-study .ux-case-grid {

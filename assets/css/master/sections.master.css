@@ -126,6 +126,7 @@
 }
 
 .ea-content--detail {
+    --ea-left-offset: clamp(2vw, 3vw, 4vw);
     scroll-snap-type:unset;
 }
 
@@ -137,48 +138,39 @@
     width:100%;
 }
 
+
+/* DETAIL: single width/padding contract applied only on section */
 .ea-content--detail .ea-section {
-    width:100%;
-    min-height:auto;
-    height:auto;
-    justify-content:flex-start;
-    align-items:flex-start;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding-top: var(--ea-section-pad-top, var(--ea-section-vspace));
     padding-bottom: var(--ea-section-pad-bottom, var(--ea-section-vspace));
-    padding-left: clamp(2vw, 4vw, 6vw);
-    padding-right: clamp(2vw, 4vw, 6vw);
-    max-width: clamp(75%, 88vw, 98%);
+    padding-left: clamp(3vw, 4vw, 5vw);
+    padding-right: clamp(3vw, 4vw, 5vw);
+    max-width: clamp(80vw, 86vw, 90vw);
     margin-inline: auto;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
-.ea-content--detail .ea-section .ea-container {
-    min-height:auto;
-    height:auto;
-    align-items:flex-start;
-    max-width: clamp(75%, 88vw, 98%);
-    width:100%;
-    margin-inline-start: 0;
-    margin-inline-end: auto;
-    padding-left: clamp(2vw, 4vw, 6vw);
-    padding-right: clamp(2vw, 4vw, 6vw);
-    padding-bottom: clamp(5vw, 7vw, 10vw);
-    width: clamp(75%, 88vw, 98%);
+/* DETAIL: remove descendant width/padding layers */
+.ea-content--detail .ea-section .ea-container,
+.ea-content--detail .ea-view,
+.ea-content--detail .ea-detail,
+.ea-content--detail .ea-section-detail {
+    min-height: auto;
+    height: auto;
+    align-items: flex-start;
+    max-width: 100%;
+    width: 100%;
+    margin-inline: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
     text-align: left;
-    overflow-x: hidden;
-}
-
-.ea-content--detail .ea-view {
-    height:auto;
-    min-height:unset;
-    align-items:flex-start;
-    justify-content:flex-start;
-    width:100%;
-    max-width: clamp(75%, 88vw, 98%);
-    margin-inline: auto;
-    padding-left: clamp(2vw, 4vw, 6vw);
-    padding-right: clamp(2vw, 4vw, 6vw);
-    text-align: left;
+    overflow: visible;
 }
 
 .ea-content--detail .ea-section > .ea-container {
@@ -196,6 +188,17 @@
 
 .ea-mode-detail .ea-section--open .ea-detail {
     display:flex !important;
+}
+
+.ea-detail,
+.ea-section-detail {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: visible;
 }
 
 .ea-mode-detail #ea-progress-nav {
@@ -222,27 +225,36 @@
         min-height: auto;
     }
     #ea-page-content:not(.ea-content--detail) .ea-section {
-        max-width: clamp(85%, 92vw, 98%);
-        padding-left: clamp(3vw, 5vw, 6vw);
-        padding-right: clamp(3vw, 5vw, 6vw);
+        max-width: clamp(92vw, 96vw, 100vw);
+        padding-inline: clamp(2vw, 3vw, 4vw);
+        margin-inline: auto;
+    }
+    #ea-page-content:not(.ea-content--detail) .ea-section > .ea-container {
+        max-width: clamp(92vw, 96vw, 100vw);
+        padding-inline: clamp(2vw, 3vw, 4vw);
+        margin-inline: auto;
+    }
+    .ea-detail,
+    .ea-section-detail {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
     .ea-section > .ea-container {
         width: 100%;
-        max-width: clamp(85%, 92vw, 98%);
+        max-width: 100%;
         height: auto;
         min-height: auto;
-        margin-inline-start: 0;
-        margin-inline-end: auto;
-        padding-inline-start: 0;
-        padding-inline-end: clamp(3vw, 5vw, 6vw);
+        margin-inline: 0;
+        padding-inline: 0;
     }
     .ea-view {
         height: auto;
         min-height: auto;
         justify-content: flex-start;
-        max-width: var(--ea-detail-max-width);
-        margin-inline: auto;
-        padding-inline: var(--ea-detail-pad-mobile);
+        max-width: 100%;
+        margin-inline: 0;
+        padding-inline: 0;
     }
     .ea-preview,
     .ea-detail {
@@ -251,11 +263,16 @@
     .ea-content--detail .ea-section {
         padding-top: clamp(6vw, 12vw, 18vw);
         padding-bottom: clamp(6vw, 12vw, 18vw);
+        max-width: clamp(94vw, 98vw, 100vw);
+        padding-left: clamp(2vw, 3vw, 4vw);
+        padding-right: clamp(2vw, 3vw, 4vw);
     }
     .ea-content--detail .ea-section .ea-container {
-        padding-left: clamp(2vw, 4vw, 6vw);
-        padding-right: clamp(2vw, 4vw, 6vw);
-        padding-bottom: clamp(6vw, 10vw, 14vw);
+        max-width: 100%;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
     }
     .ea-section--open .ea-container {
         min-height: auto;
@@ -281,11 +298,11 @@
         width: min(var(--ea-content-wide, var(--ea-layout-max, 1200px)), calc(100% - calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap))));
     }
     .ea-content--detail .ea-section {
-        padding-inline-start: calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap));
-        max-width: clamp(70%, 80vw, 95%);
+        padding-inline-start: clamp(3vw, 4vw, 5vw);
+        max-width: clamp(80vw, 86vw, 90vw);
     }
     .ea-content--detail .ea-section .ea-container {
-        width: clamp(70%, 80vw, 95%);
+        width: 100%;
     }
 }
 

@@ -72,3 +72,29 @@
 **Sprint 11E — Footer & Detail Final Alignment**
 - Footer centré (align + justify + padding/gap en vw) et détails légèrement élargis (max-width/paddings en vw) sans toucher aux systèmes. [✔️ DONE — 2025-12-02]
 - Livrables : SPRINT_11E_FINAL_ALIGNMENT_REPORT.md, SPRINT_11E_FINAL_ALIGNMENT_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 11F — Dynamic Responsive Final Fix**
+- Détails élargis (desktop/mobile) en clamps vw/% + paddings fluides, overview mobile élargi, overflow horizontal neutralisé. [✔️ DONE — 2025-12-02]
+- Footer centré conservé, pastilles/animations non tronquées, quotes premium sans barre, grilles fluidifiées anti-overflow. [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_11F_FINAL_DYNAMIC_REPORT.md, SPRINT_11F_FINAL_DYNAMIC_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 11G — Detail Width Fix**
+- Correction de la width des pages détail (desktop/mobile) : max-width élargies et paddings fluides, overviews inchangées. [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_11G_DETAIL_WIDTH_FIX_REPORT.md, SPRINT_11G_DETAIL_WIDTH_FIX_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 12 — Foundation Reset (Analyse + Patch plan)**
+- Audit complet des couches CSS, contrat layout draft, cartes de conflits/ruptures/responsive/animations, comparaison overview/detail, et proposition de patch minimal. [✔️ DONE — 2025-12-02]
+- Patch minimal appliqué (width/padding cohérents, overflow global réduit, grilles fluidifiées) sans toucher aux systèmes critiques. [✔️ DONE — 2025-12-02]
+- Livrables : LAYOUT_CONTRACT_DRAFT.md, CSS_CONFLICT_MAP.md, RESPONSIVE_BREAK_MAP.md, ANIMATION_CLIP_MAP.md, OVERVIEW_DETAIL_COMPARE.md, SPRINT_12_PATCH_PROPOSAL.md, SPRINT_12_REPORT.md, SPRINT_12_PATCH_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 12.G — Widen Detail Everywhere**
+- Détails élargis (desktop clamp 82–96%, mobile clamp 94–100%), paddings réduits, overflow visible sur blocs/tags pour animations, grilles assouplies; overviews et systèmes intacts. [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_12G_WIDEN_DETAIL_REPORT.md, SPRINT_12G_WIDEN_DETAIL_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 14 — UX Layer Polish**
+- Respiration unifiée (padding clamp 2–4vw), fond léger + blur + radius cohérent sur blocks/cards/notes/quotes/highlights/case-study/patterns ; gaps unifiés ; CTA/tags/pills harmonisés et non tronqués ; overflow visible pour animations. [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_14_UX_POLISH_REPORT.md, SPRINT_14_UX_POLISH_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 13 — Detail Final Fix**
+- Contrat unique width/padding pour le mode détail (80–90vw desktop, 94–100vw mobile), suppression des couches width/padding héritées, grilles 1col overflow visible, overview mobile élargie. [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_13_DETAIL_FINAL_FIX_REPORT.md, SPRINT_13_DETAIL_FINAL_FIX_DIFF.patch. [✔️ DONE — 2025-12-02]
