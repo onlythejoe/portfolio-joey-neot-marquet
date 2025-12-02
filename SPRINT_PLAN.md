@@ -48,3 +48,8 @@
 - Recentrage global des conteneurs/blocks (clamp max-width, margin-inline auto, padding-inline fluide) sans toucher au scroll/menu. [✔️ DONE — 2025-12-02]
 - Échelle fluide typo/espaces + densité mobile réduite (dvh, padding clamp, grilles 3→2→1) et fix iOS bande noire. [✔️ DONE — 2025-12-02]
 - Livrables finaux livrés (audit, diff, rapport sprint). [✔️ DONE — 2025-12-02]
+
+**Sprint 11C — Alignements & Layout Grid Fix**
+- Axe vertical unique basé sur la sidebar (token `--ea-content-offset-left` appliqué aux sections, containers, stacks, grilles, previews/détails). [✔️ DONE — 2025-12-02]
+- Alignement gauche harmonisé (text-align/align-items start) pour previews, détails, tags, CTA, blocs UX, grilles, avec largeur calculée vs progress-nav. [✔️ DONE — 2025-12-02]
+- Livrables produits : ALIGNMENTS_AUDIT.json, ALIGNMENTS_DIFF.patch, SPRINT_11C_ALIGNMENTS_REPORT.md. [✔️ DONE — 2025-12-02]

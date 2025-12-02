@@ -1,0 +1,21 @@
+{
+  "sprint": "11C",
+  "goal": "Aligner tous les contenus sur un axe gauche unique basé sur la sidebar/progress-nav.",
+  "token": {
+    "ea-progress-nav-width": "clamp(60px, 5vw, 88px)",
+    "ea-content-offset-left": "calc(var(--ea-progress-nav-width) + clamp(1rem, 4vw, 3rem))"
+  },
+  "applied_to": [
+    "ea.master grid col uses --ea-progress-nav-width",
+    "ea-section padding-inline-start uses --ea-content-offset-left",
+    "ea-container width and margins constrained vs offset",
+    "ea-preview / ea-detail align start",
+    "ux-layer stacks, grids, blocks, tags, CTA aligned start with offset padding"
+  ],
+  "not_touched": ["scroll-snap", "menu visibility/sticky", "router/loader", "halos"],
+  "qa": [
+    "Vérifier l’alignement gauche sur mobile/tablette/desktop",
+    "Tester wrap des tags/CTA sur petits viewports",
+    "Contrôler absence d’overflow horizontal"
+  ]
+}

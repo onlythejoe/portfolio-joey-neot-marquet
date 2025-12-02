@@ -14,12 +14,14 @@
     width:100%;
     min-height:100dvh;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     padding-block: var(--ea-section-vspace);
-    padding-inline: var(--ea-pad-inline, var(--ea-pad));
+    padding-inline-start: var(--ea-content-offset-left);
+    padding-inline-end: var(--ea-pad-inline, var(--ea-pad));
     scroll-snap-align:center;
     scroll-snap-stop:always;
+    text-align: left;
 }
 
 /* --- PORTE EA (fenêtre verticale centrée) --- */
@@ -28,25 +30,29 @@
     width:100%;
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     max-width: var(--ea-content-max);
     margin-inline: auto;
     padding-inline: var(--ea-pad-inline);
+    text-align: left;
 }
 
 /* Container interne */
 .ea-section > .ea-container {
-    width:100%;
+    width:min(var(--ea-content-wide, var(--ea-layout-max, 1200px)), calc(100% - var(--ea-content-offset-left)));
     max-width: var(--ea-content-wide, var(--ea-layout-max, 1200px));
     height:var(--ea-view-height);
     display:flex;
     flex-direction:column;
     justify-content:center;
-    align-items:center;
-    margin: 0 auto;
-    padding-inline: var(--ea-pad-inline);
+    align-items:flex-start;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+    padding-inline-start: 0;
+    padding-inline-end: var(--ea-pad-inline);
     gap: var(--ea-space-sm);
+    text-align: left;
 }
 
 /* --- PREVIEW / DETAIL MODES --- */
@@ -58,7 +64,11 @@
     gap: clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md));
     align-items:flex-start;
     max-width: var(--ea-content-max);
-    margin-inline: auto;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+    text-align: left;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
 }
 
 .ea-detail {
@@ -127,9 +137,11 @@
     min-height:auto;
     height:auto;
     justify-content:flex-start;
-    align-items:center;
+    align-items:flex-start;
     padding-top: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
     padding-bottom: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
+    padding-inline-start: var(--ea-content-offset-left);
+    padding-inline-end: var(--ea-pad-inline);
 }
 
 .ea-content--detail .ea-section .ea-container {
@@ -138,8 +150,10 @@
     align-items:flex-start;
     max-width:var(--ea-content-wide);
     width:100%;
-    margin:0 auto;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
     padding:0 var(--ea-pad-inline) clamp(var(--ea-space-lg), 5vw, var(--ea-space-xl));
+    width:min(var(--ea-content-wide), calc(100% - var(--ea-content-offset-left)));
 }
 
 .ea-content--detail .ea-view {
@@ -149,8 +163,10 @@
     justify-content:flex-start;
     width:100%;
     max-width: var(--ea-content-max);
-    margin-inline: auto;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
     padding-inline: var(--ea-pad-inline);
+    text-align: left;
 }
 
 .ea-content--detail .ea-section > .ea-container {
@@ -158,7 +174,7 @@
 }
 
 .ea-mode-detail .ea-section {
-    align-items:center;
+    align-items:flex-start;
     justify-content:flex-start;
 }
 
@@ -186,7 +202,8 @@
     .ea-section {
         align-items: flex-start;
         padding-block: clamp(var(--ea-space-lg), 12dvh, var(--ea-section-vspace));
-        padding-inline: var(--ea-pad-inline);
+        padding-inline-start: var(--ea-content-offset-left);
+        padding-inline-end: var(--ea-pad-inline);
         scroll-snap-align: unset;
         scroll-snap-stop: unset;
         min-height: auto;
@@ -196,16 +213,19 @@
         max-width: var(--ea-content-wide);
         height: auto;
         min-height: auto;
-        margin: 0 auto;
-        padding-inline: var(--ea-pad-inline);
+        margin-inline-start: 0;
+        margin-inline-end: auto;
+        padding-inline-start: 0;
+        padding-inline-end: var(--ea-pad-inline);
     }
     .ea-view {
         height: auto;
         min-height: auto;
         justify-content: flex-start;
         max-width: var(--ea-content-max);
-        margin-inline: auto;
-        padding-inline: var(--ea-pad-inline);
+        margin-inline-start: 0;
+        margin-inline-end: auto;
+        padding-inline: var(--ea-pad-inline) var(--ea-pad-inline);
     }
     .ea-preview,
     .ea-detail {
