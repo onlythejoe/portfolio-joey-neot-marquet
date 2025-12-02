@@ -63,3 +63,12 @@
 - Largeur desktop des détails élargie via token `--ea-detail-max-width`, padding mobile dédié, conteneurs centrés mais left-aligned. [✔️ DONE — 2025-12-02]
 - Bouton Overview/Back isolé (inline-flex, max-width fit-content, margin-bottom) pour ne plus réduire la grille; previews inchangées. [✔️ DONE — 2025-12-02]
 - Livrables : DETAIL_LAYOUT_ISSUES.json, DETAIL_LAYOUT_DIFF.patch, SPRINT_11E_DETAIL_LAYOUT_REPORT.md. [✔️ DONE — 2025-12-02]
+
+**Sprint 11D — Dynamic Responsive (Detail + Overview Mobile)**
+- Détail élargi et fluide (max-width/paddings en vw/%), overflow protégé, axe gauche conservé. [✔️ DONE — 2025-12-02]
+- Overview mobile plus large avec padding vw, typographies fluides, grilles anti-overflow en clamp(vw/%). [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_11D_DYNAMIC_RESPONSIVE_REPORT.md, SPRINT_11D_DYNAMIC_RESPONSIVE_DIFF.patch. [✔️ DONE — 2025-12-02]
+
+**Sprint 11E — Footer & Detail Final Alignment**
+- Footer centré (align + justify + padding/gap en vw) et détails légèrement élargis (max-width/paddings en vw) sans toucher aux systèmes. [✔️ DONE — 2025-12-02]
+- Livrables : SPRINT_11E_FINAL_ALIGNMENT_REPORT.md, SPRINT_11E_FINAL_ALIGNMENT_DIFF.patch. [✔️ DONE — 2025-12-02]
