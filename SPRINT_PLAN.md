@@ -15,8 +15,8 @@
 - Enrichir SEO (OG/Twitter, meta per page), analytics hooks optionnels. [✔️ DONE — 2025-12-01]
 
 **Sprint 4 — Contenus & DA**
-- Réécrire les pages clés (Home, Portfolio, Contact) avec preuves, visuels (ou placeholders réels) et microcopy claire.
-- Harmoniser hiérarchie Hn, raccourcir les blocs, utiliser listes/metrics/quotes parcimonieusement.
+- Réécrire les pages clés (Home, Portfolio, Contact) avec preuves, visuels (ou placeholders réels) et microcopy claire. [✔️ DONE — 2025-12-01]
+- Harmoniser hiérarchie Hn, raccourcir les blocs, utiliser listes/metrics/quotes parcimonieusement. [✔️ DONE — 2025-12-01]
 - Activer un pipeline de build léger (Vite/Rollup) pour bundler/minifier CSS/JS, gérer les versions, préparer un hébergement.
 
 **Sprint 5 — Perf & QA**
