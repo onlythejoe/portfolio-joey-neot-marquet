@@ -169,13 +169,15 @@
     }
     .ea-section {
         align-items: flex-start;
-        padding: clamp(var(--ea-space-xl), 14vh, var(--ea-section-vspace)) clamp(1.4rem, 6vw, 2.6rem);
+        padding: clamp(var(--ea-space-lg), 12vh, var(--ea-section-vspace)) clamp(1.25rem, 6vw, 2.4rem);
         scroll-snap-align: unset;
         scroll-snap-stop: unset;
+        min-height: auto;
     }
     .ea-section > .ea-container {
         width: min(var(--ea-layout-max, 1200px), 96%);
         height: auto;
+        min-height: auto;
     }
     .ea-view {
         height: auto;
@@ -192,6 +194,9 @@
     }
     .ea-content--detail .ea-section .ea-container {
         padding: 0 clamp(1.25rem, 6vw, 2.25rem) clamp(2.5rem, 7vw, 3rem);
+    }
+    .ea-section--open .ea-container {
+        min-height: auto;
     }
 }
 

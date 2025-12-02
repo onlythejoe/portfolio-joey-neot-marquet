@@ -33,3 +33,8 @@
 - Réécrire et condenser toutes les previews (home, about, expertises, portfolio, vision) avec pattern UX unifié (tags, stack, leads courtes). [✔️ DONE — 2025-12-06]
 - Renforcer lisibilité mobile (2–3 lignes max), hooks clairs, respect UX Layer sans toucher aux détails. [✔️ DONE — 2025-12-06]
 - Produire audit + rewrites + diff + rapport Sprint 8. [✔️ DONE — 2025-12-06]
+
+**Sprint 9 — Responsive global**
+- Audit responsive complet (pages + CSS), cartographie des points à corriger. [✔️ DONE — 2025-12-06]
+- Clamp typo, CPL limité, grilles repliées (ux-grid-2/3), padding/gaps mobiles réduits, tags/CTA wrap-safe, overflow-x hidden. [✔️ DONE — 2025-12-06]
+- Rapports livrés (audit, issues, CSS map, diff, report). [✔️ DONE — 2025-12-06]

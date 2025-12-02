@@ -9,6 +9,7 @@ body {
     font-family: var(--ea-font-main, Inter, sans-serif);
     background: var(--ea-bg, #000);
     color: var(--ea-fg, #fff);
+    overflow-x:hidden;
 }
 
 img { max-width:100%; display:block; }

@@ -1,0 +1,187 @@
+diff --git a/assets/css/core/reset.css b/assets/css/core/reset.css
+index 2f9f545..a1b4976 100644
+--- a/assets/css/core/reset.css
++++ b/assets/css/core/reset.css
+@@ -9,6 +9,7 @@ body {
+     font-family: var(--ea-font-main, Inter, sans-serif);
+     background: var(--ea-bg, #000);
+     color: var(--ea-fg, #fff);
++    overflow-x:hidden;
+ }
+ 
+ img { max-width:100%; display:block; }
+diff --git a/assets/css/master/sections.master.css b/assets/css/master/sections.master.css
+index b923439..4c34453 100644
+--- a/assets/css/master/sections.master.css
++++ b/assets/css/master/sections.master.css
+@@ -169,13 +169,15 @@
+     }
+     .ea-section {
+         align-items: flex-start;
+-        padding: clamp(var(--ea-space-xl), 14vh, var(--ea-section-vspace)) clamp(1.4rem, 6vw, 2.6rem);
++        padding: clamp(var(--ea-space-lg), 12vh, var(--ea-section-vspace)) clamp(1.25rem, 6vw, 2.4rem);
+         scroll-snap-align: unset;
+         scroll-snap-stop: unset;
++        min-height: auto;
+     }
+     .ea-section > .ea-container {
+         width: min(var(--ea-layout-max, 1200px), 96%);
+         height: auto;
++        min-height: auto;
+     }
+     .ea-view {
+         height: auto;
+@@ -193,6 +195,9 @@
+     .ea-content--detail .ea-section .ea-container {
+         padding: 0 clamp(1.25rem, 6vw, 2.25rem) clamp(2.5rem, 7vw, 3rem);
+     }
++    .ea-section--open .ea-container {
++        min-height: auto;
++    }
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+diff --git a/assets/css/ui/ux-layer.css b/assets/css/ui/ux-layer.css
+index 85285ec..ec8506b 100644
+--- a/assets/css/ui/ux-layer.css
++++ b/assets/css/ui/ux-layer.css
+@@ -2,23 +2,25 @@
+ 
+ /* Primitives */
+ .ux-title {
+-    font-size: var(--ea-font-size-xxl);
++    font-size: clamp(2rem, 3.4vw, var(--ea-font-size-xxl));
+     line-height: var(--ea-leading-lg);
+     font-weight: var(--ea-weight-semibold);
+     color: var(--ea-fg);
+     margin: 0 0 var(--ea-space-sm);
++    max-width: 72ch;
+ }
+ 
+ .ux-subtitle {
+-    font-size: var(--ea-font-size-xl);
++    font-size: clamp(1.5rem, 2.6vw, var(--ea-font-size-xl));
+     line-height: var(--ea-leading-lg);
+     font-weight: var(--ea-weight-semibold);
+     color: var(--ea-fg);
+     margin: 0 0 var(--ea-space-sm);
++    max-width: 72ch;
+ }
+ 
+ .ux-lead {
+-    font-size: var(--ea-font-size-lg);
++    font-size: clamp(1.1rem, 2vw, var(--ea-font-size-lg));
+     line-height: var(--ea-leading-lg);
+     font-weight: var(--ea-weight-medium);
+     color: var(--ea-fg-soft);
+@@ -26,14 +28,14 @@
+ }
+ 
+ .ux-paragraph {
+-    font-size: var(--ea-font-size-md);
++    font-size: clamp(1rem, 1.6vw, var(--ea-font-size-md));
+     line-height: var(--ea-leading-md);
+     color: var(--ea-fg);
+     max-width: 78ch;
+ }
+ 
+ .ux-label {
+-    font-size: var(--ea-font-size-sm);
++    font-size: clamp(.78rem, 1.2vw, var(--ea-font-size-sm));
+     line-height: var(--ea-leading-sm);
+     font-weight: var(--ea-weight-medium);
+     letter-spacing: .04em;
+@@ -51,12 +53,13 @@
+     display: inline-flex;
+     align-items: center;
+     gap: var(--ea-space-xs);
+-    padding: calc(var(--ea-space-xs) * .75) var(--ea-space-sm);
++    padding: calc(var(--ea-space-xs) * .65) var(--ea-space-sm);
+     border-radius: var(--ea-radius-lg);
+     background: var(--ea-surface-2);
+     color: var(--ea-fg-soft);
+-    font-size: var(--ea-font-size-sm);
++    font-size: clamp(.8rem, 1.5vw, var(--ea-font-size-sm));
+     line-height: var(--ea-leading-sm);
++    white-space: nowrap;
+ }
+ 
+ .ux-keyword {
+@@ -212,6 +215,7 @@
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-md);
++    max-width: 82ch;
+ }
+ 
+ .ux-grid-2 {
+@@ -300,6 +304,12 @@
+     }
+ }
+ 
++@media (max-width: var(--ea-bp-lg)) {
++    .ux-grid-3 {
++        grid-template-columns: 1fr;
++    }
++}
++
+ @media (max-width: calc(var(--ea-bp-md) - 0.02px)) {
+     .ux-grid-2,
+     .ux-grid-3 {
+@@ -312,27 +322,10 @@
+ }
+ 
+ @media (max-width: var(--ea-bp-md)) {
+-    .ux-title {
+-        font-size: clamp(2.1rem, 5vw, 2.6rem);
+-        line-height: 1.25;
+-    }
+-    .ux-subtitle {
+-        font-size: clamp(1.45rem, 4.6vw, 2rem);
+-        line-height: 1.35;
+-    }
+-    .ux-lead {
+-        font-size: 1.05rem;
+-        line-height: 1.55;
+-        max-width: 64ch;
+-    }
+-    .ux-paragraph {
+-        font-size: .98rem;
+-        line-height: 1.6;
+-        max-width: 64ch;
+-    }
+     .ux-stack,
+     .ea-stack {
+-        gap: var(--ea-space-md);
++        gap: var(--ea-space-sm);
++        max-width: 100%;
+     }
+     .ux-grid-2,
+     .ux-grid-3 {
+@@ -344,11 +337,15 @@
+     .ux-highlight,
+     .ux-quote,
+     .ux-note {
+-        padding: var(--ea-space-md);
++        padding: calc(var(--ea-space-md) * .85);
+     }
+     .ux-section-group {
+         gap: var(--ea-space-lg);
+     }
++    .ux-tag {
++        font-size: clamp(.78rem, 2.4vw, .95rem);
++        padding: calc(var(--ea-space-xs) * .55) var(--ea-space-xs);
++    }
+ }
+ 
+ /* CTA amélioré */
+@@ -363,6 +360,9 @@
+   color: var(--ea-fg);
+   font-weight: var(--ea-weight-medium);
+   transition: all var(--ea-dur-fast) var(--ea-ease-standard);
++  white-space: normal;
++  text-align: center;
++  max-width: 100%;
+ }
+ .ux-cta:hover {
+   background: rgba(255,255,255,0.12);
