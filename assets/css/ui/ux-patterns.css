@@ -4,6 +4,10 @@
     display: grid;
     gap: var(--ea-grid-gap);
     align-items: center;
+    width: 100%;
+    max-width: var(--ea-content-wide, var(--ea-content-max));
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 @media (min-width: var(--ea-bp-md)) {
@@ -16,18 +20,29 @@
     display: flex;
     flex-direction: column;
     gap: var(--ea-space-lg);
+    width: 100%;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 .ux-section-value-proof .ux-proof-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
     gap: var(--ea-grid-gap-tight);
+    width: 100%;
+    max-width: var(--ea-content-wide, var(--ea-content-max));
+    margin-inline: auto;
 }
 
 .ux-manifesto {
     display: flex;
     flex-direction: column;
     gap: var(--ea-space-xl);
+    width: 100%;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 .ux-manifesto .ux-manifesto-block {
@@ -40,20 +55,33 @@
     display: flex;
     flex-direction: column;
     gap: var(--ea-space-lg);
+    width: 100%;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 .ux-case-study .ux-case-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
     gap: var(--ea-grid-gap);
+    width: 100%;
+    max-width: var(--ea-content-wide, var(--ea-content-max));
+    margin-inline: auto;
 }
 
 .ux-faq {
     display: flex;
     flex-direction: column;
     gap: var(--ea-space-md);
+    width: 100%;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 .ux-faq .ux-accordion {
     gap: var(--ea-space-sm);
+    width: 100%;
+    max-width: var(--ea-content-max);
 }

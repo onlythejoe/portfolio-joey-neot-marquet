@@ -1,16 +1,19 @@
 .ea-badge {
     display:inline-block;
-    padding:.4rem .8rem;
+    padding:clamp(.35rem, .8vw, .5rem) clamp(.7rem, 1.5vw, .95rem);
     border-radius:var(--ea-radius-md);
     background:rgba(255,255,255,.08);
     color:var(--ea-fg-soft);
-    font-size:.85rem;
+    font-size:clamp(.82rem, 1vw, .95rem);
     letter-spacing:.5px;
 }
 .ea-keypill {
-    padding:.5rem 1rem;
+    padding:clamp(.4rem, 1vw, .6rem) clamp(.9rem, 1.6vw, 1.1rem);
     border:1px solid rgba(255,255,255,.1);
     border-radius:2rem;
-    font-size:.8rem;
+    font-size:clamp(.78rem, .9vw, .92rem);
     opacity:.8;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 }

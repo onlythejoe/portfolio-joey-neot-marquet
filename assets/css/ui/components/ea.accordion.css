@@ -1,7 +1,12 @@
-.ea-accordion { width:100%; }
+.ea-accordion {
+    width:100%;
+    max-width:var(--ea-content-max);
+    margin-inline:auto;
+    padding-inline:var(--ea-pad-inline);
+}
 .ea-acc-item {
     border-bottom:1px solid rgba(255,255,255,.12);
-    padding:1rem 0;
+    padding:clamp(var(--ea-space-sm), 1.4vw, var(--ea-space-md)) 0;
 }
 .ea-acc-title {
     cursor:pointer;

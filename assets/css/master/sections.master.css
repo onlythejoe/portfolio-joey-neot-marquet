@@ -1,19 +1,23 @@
 /* --- SCROLL CONTAINER --- */
 #ea-page-content {
-    height:100vh;
-    overflow-y:auto;
-    scroll-snap-type:y mandatory;
-    scroll-behavior:smooth;
+    min-height: 100dvh;
+    height: 100dvh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background-size: inherit;
+    background-position: inherit;
 }
 
 /* --- SECTION MAGNETIQUE --- */
 .ea-section {
     width:100%;
-    min-height:100vh;
+    min-height:100dvh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:var(--ea-section-vspace) var(--ea-pad);
+    padding-block: var(--ea-section-vspace);
+    padding-inline: var(--ea-pad-inline, var(--ea-pad));
     scroll-snap-align:center;
     scroll-snap-stop:always;
 }
@@ -26,16 +30,23 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 /* Container interne */
 .ea-section > .ea-container {
-    width:min(var(--ea-layout-max, 1200px), 90%);
+    width:100%;
+    max-width: var(--ea-content-wide, var(--ea-layout-max, 1200px));
     height:var(--ea-view-height);
     display:flex;
     flex-direction:column;
     justify-content:center;
+    align-items:center;
     margin: 0 auto;
+    padding-inline: var(--ea-pad-inline);
+    gap: var(--ea-space-sm);
 }
 
 /* --- PREVIEW / DETAIL MODES --- */
@@ -44,13 +55,14 @@
     width:100%;
     display:flex;
     flex-direction:column;
-    gap:1rem;
+    gap: clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md));
     align-items:flex-start;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
 }
 
 .ea-detail {
-    padding-top:1rem;
-    max-width:100%;
+    padding-top: clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md));
 }
 
 .ea-detail[hidden] {
@@ -59,7 +71,7 @@
 
 .ea-section--open .ea-container {
     height:auto;
-    min-height:100vh;
+    min-height:100dvh;
 }
 
 .ea-mode-detail .ea-section--open .ea-container {
@@ -105,7 +117,7 @@
 .ea-content--detail#ea-page-content {
     padding:0;
     height:auto;
-    min-height:100vh;
+    min-height:100dvh;
     scroll-snap-type:none;
     width:100%;
 }
@@ -116,18 +128,18 @@
     height:auto;
     justify-content:flex-start;
     align-items:center;
-    padding-top:4rem;
-    padding-bottom:4rem;
+    padding-top: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
+    padding-bottom: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
 }
 
 .ea-content--detail .ea-section .ea-container {
     min-height:auto;
     height:auto;
     align-items:flex-start;
-    max-width:var(--ea-layout-max);
+    max-width:var(--ea-content-wide);
     width:100%;
     margin:0 auto;
-    padding:0 2.5rem 3.5rem;
+    padding:0 var(--ea-pad-inline) clamp(var(--ea-space-lg), 5vw, var(--ea-space-xl));
 }
 
 .ea-content--detail .ea-view {
@@ -136,6 +148,9 @@
     align-items:flex-start;
     justify-content:flex-start;
     width:100%;
+    max-width: var(--ea-content-max);
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline);
 }
 
 .ea-content--detail .ea-section > .ea-container {
@@ -170,21 +185,27 @@
     }
     .ea-section {
         align-items: flex-start;
-        padding: clamp(var(--ea-space-lg), 12vh, var(--ea-section-vspace)) clamp(1.25rem, 6vw, 2.4rem);
+        padding-block: clamp(var(--ea-space-lg), 12dvh, var(--ea-section-vspace));
+        padding-inline: var(--ea-pad-inline);
         scroll-snap-align: unset;
         scroll-snap-stop: unset;
         min-height: auto;
     }
     .ea-section > .ea-container {
-        width: min(var(--ea-layout-max, 1200px), 96%);
+        width: 100%;
+        max-width: var(--ea-content-wide);
         height: auto;
         min-height: auto;
         margin: 0 auto;
+        padding-inline: var(--ea-pad-inline);
     }
     .ea-view {
         height: auto;
         min-height: auto;
         justify-content: flex-start;
+        max-width: var(--ea-content-max);
+        margin-inline: auto;
+        padding-inline: var(--ea-pad-inline);
     }
     .ea-preview,
     .ea-detail {
@@ -195,7 +216,7 @@
         padding-bottom: var(--ea-space-xl);
     }
     .ea-content--detail .ea-section .ea-container {
-        padding: 0 clamp(1.25rem, 6vw, 2.25rem) clamp(2.5rem, 7vw, 3rem);
+        padding: 0 var(--ea-pad-inline) clamp(2.5rem, 7vw, 3rem);
     }
     .ea-section--open .ea-container {
         min-height: auto;

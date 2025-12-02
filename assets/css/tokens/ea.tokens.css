@@ -19,35 +19,39 @@
 
     /* TYPOGRAPHY */
     --ea-font-main: 'Inter', sans-serif;
-    --ea-font-size-sm: .9rem;
-    --ea-font-size-md: 1rem;
-    --ea-font-size-lg: 1.6rem;
-    --ea-font-size-xl: 2.4rem;
-    --ea-font-size-xxl: 4rem;
-    --ea-leading-sm: 1.3;
-    --ea-leading-md: 1.5;
-    --ea-leading-lg: 1.7;
+    --ea-font-size-sm: clamp(.85rem, .6vw + .82rem, .95rem);
+    --ea-font-size-md: clamp(1rem, .5vw + .95rem, 1.15rem);
+    --ea-font-size-lg: clamp(1.25rem, 1vw + 1.05rem, 1.8rem);
+    --ea-font-size-xl: clamp(1.75rem, 1.6vw + 1.2rem, 2.6rem);
+    --ea-font-size-xxl: clamp(2.4rem, 3vw + 1.4rem, 3.8rem);
+    --ea-leading-sm: 1.4;
+    --ea-leading-md: 1.55;
+    --ea-leading-lg: 1.65;
     --ea-weight-regular: 400;
     --ea-weight-medium: 500;
     --ea-weight-semibold: 600;
 
     /* LAYOUT */
-    --ea-container-max: 75rem;
+    --ea-content-max: clamp(60ch, 80vw, 90ch);
+    --ea-content-wide: clamp(68ch, 86vw, 72rem);
+    --ea-container-max: var(--ea-content-wide);
     --ea-layout-max: var(--ea-container-max);
     --ea-max-width: var(--ea-layout-max); /* legacy alias */
     --ea-max: var(--ea-layout-max);       /* legacy alias */
-    --ea-space-xs: .5rem;
-    --ea-space-sm: .75rem;
-    --ea-space-md: 1.25rem;
-    --ea-space-lg: 2rem;
-    --ea-space-xl: 3.5rem;
-    --ea-space-xxl: 6rem;
-    --ea-pad: var(--ea-space-lg);
-    --ea-section-vspace: var(--ea-space-xxl);
-    --ea-view-height: 80vh;
-    --ea-grid-gap: var(--ea-space-lg);
-    --ea-grid-gap-tight: var(--ea-space-md);
-    --ea-grid-col-min: 16rem;
+    --ea-space-xs: clamp(.45rem, .7vw, .65rem);
+    --ea-space-sm: clamp(.7rem, 1vw, .95rem);
+    --ea-space-md: clamp(1rem, 1.6vw, 1.5rem);
+    --ea-space-lg: clamp(1.5rem, 3vw, 2.5rem);
+    --ea-space-xl: clamp(2.25rem, 4.5vw, 3.75rem);
+    --ea-space-xxl: clamp(3rem, 8vw, 6rem);
+    --ea-pad-inline: clamp(1rem, 4vw, 3rem);
+    --ea-pad-block: clamp(1.5rem, 6dvh, 3rem);
+    --ea-pad: var(--ea-pad-inline);
+    --ea-section-vspace: clamp(3rem, 12dvh, 6.5rem);
+    --ea-view-height: 80dvh;
+    --ea-grid-gap: clamp(1.25rem, 3vw, 2.5rem);
+    --ea-grid-gap-tight: clamp(1rem, 2vw, 1.75rem);
+    --ea-grid-col-min: clamp(15rem, 26vw, 20rem);
 
     /* RADIUS */
     --ea-radius-xs: .25rem;

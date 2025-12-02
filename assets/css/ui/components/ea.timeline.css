@@ -1,10 +1,14 @@
 .ea-timeline-vertical {
     display:flex;
     flex-direction:column;
-    gap:2rem;
+    gap:clamp(1.5rem, 3vw, 2.5rem);
     border-left:1px solid rgba(255,255,255,.12);
-    padding-left:2rem;
+    padding-left:clamp(var(--ea-space-md), 2vw, var(--ea-space-lg));
+    padding-right:var(--ea-pad-inline, var(--ea-space-md));
+    width:100%;
+    max-width:var(--ea-content-max);
+    margin-inline:auto;
 }
 .ea-phase-card {
-    padding:1rem 0;
+    padding:clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md)) 0;
 }

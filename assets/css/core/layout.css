@@ -1,5 +1,7 @@
 .ea-container {
-    width:min(var(--ea-layout-max, var(--ea-max)), 90%);
-    margin-inline:auto;
-    padding:var(--ea-pad, var(--ea-space-lg)) 0;
+    width:100%;
+    max-width: var(--ea-content-wide, var(--ea-layout-max, var(--ea-max)));
+    margin-inline: auto;
+    padding-inline: var(--ea-pad-inline, var(--ea-pad));
+    padding-block: var(--ea-pad-block, var(--ea-space-lg));
 }

@@ -43,3 +43,8 @@
 - Audit v2 (typographies, grilles, alignement tags/CTA, paddings, overflow) et cartographie. [✔️ DONE — 2025-12-06]
 - Ajustements CSS : CPL resserré, line-height mobile, grids 3→2 cols tablette puis 1 mobile, tags/CTA centrés et wrap, padding clampé, containers centrés, overflow-x protégé. [✔️ DONE — 2025-12-06]
 - Livrables (audit/issue/map/report/diff) produits. [✔️ DONE — 2025-12-06]
+
+**Sprint 11B — Responsive Perfect Polish**
+- Recentrage global des conteneurs/blocks (clamp max-width, margin-inline auto, padding-inline fluide) sans toucher au scroll/menu. [✔️ DONE — 2025-12-02]
+- Échelle fluide typo/espaces + densité mobile réduite (dvh, padding clamp, grilles 3→2→1) et fix iOS bande noire. [✔️ DONE — 2025-12-02]
+- Livrables finaux livrés (audit, diff, rapport sprint). [✔️ DONE — 2025-12-02]

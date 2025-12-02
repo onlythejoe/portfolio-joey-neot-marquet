@@ -1,0 +1,739 @@
+diff --git a/SPRINT_PLAN.md b/SPRINT_PLAN.md
+index aed45fd..e026052 100644
+--- a/SPRINT_PLAN.md
++++ b/SPRINT_PLAN.md
+@@ -43,3 +43,8 @@
+ - Audit v2 (typographies, grilles, alignement tags/CTA, paddings, overflow) et cartographie. [✔️ DONE — 2025-12-06]
+ - Ajustements CSS : CPL resserré, line-height mobile, grids 3→2 cols tablette puis 1 mobile, tags/CTA centrés et wrap, padding clampé, containers centrés, overflow-x protégé. [✔️ DONE — 2025-12-06]
+ - Livrables (audit/issue/map/report/diff) produits. [✔️ DONE — 2025-12-06]
++
++**Sprint 11B — Responsive Perfect Polish**
++- Recentrage global des conteneurs/blocks (clamp max-width, margin-inline auto, padding-inline fluide) sans toucher au scroll/menu. [✔️ DONE — 2025-12-02]
++- Échelle fluide typo/espaces + densité mobile réduite (dvh, padding clamp, grilles 3→2→1) et fix iOS bande noire. [✔️ DONE — 2025-12-02]
++- Livrables finaux livrés (audit, diff, rapport sprint). [✔️ DONE — 2025-12-02]
+diff --git a/assets/css/core/layout.css b/assets/css/core/layout.css
+index 9101758..bd58c9e 100644
+--- a/assets/css/core/layout.css
++++ b/assets/css/core/layout.css
+@@ -1,5 +1,7 @@
+ .ea-container {
+-    width:min(var(--ea-layout-max, var(--ea-max)), 90%);
+-    margin-inline:auto;
+-    padding:var(--ea-pad, var(--ea-space-lg)) 0;
++    width:100%;
++    max-width: var(--ea-content-wide, var(--ea-layout-max, var(--ea-max)));
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline, var(--ea-pad));
++    padding-block: var(--ea-pad-block, var(--ea-space-lg));
+ }
+diff --git a/assets/css/core/reset.css b/assets/css/core/reset.css
+index a1b4976..3e54779 100644
+--- a/assets/css/core/reset.css
++++ b/assets/css/core/reset.css
+@@ -5,11 +5,15 @@
+ html { font-size:16px; }
+ 
+ body {
+-    width:100%; min-height:100vh;
++    width:100%;
++    min-height:100dvh;
+     font-family: var(--ea-font-main, Inter, sans-serif);
+     background: var(--ea-bg, #000);
+     color: var(--ea-fg, #fff);
+-    overflow-x:hidden;
++    background-size: cover;
++    background-position: center;
++    overflow-x: hidden;
++    overflow-y: auto;
+ }
+ 
+ img { max-width:100%; display:block; }
+diff --git a/assets/css/master/ea.master.css b/assets/css/master/ea.master.css
+index 61f0ebd..2c4dee0 100644
+--- a/assets/css/master/ea.master.css
++++ b/assets/css/master/ea.master.css
+@@ -5,12 +5,23 @@
+ @import "./sections.master.css";
+ 
+ /* === SIDEBAR LAYOUT (EA PROGRESS NAV) === */
++#ea-root {
++    min-height: 100dvh;
++    background-size: cover;
++    background-position: center;
++    overflow-y: auto;
++}
++
+ #ea-layout {
+     display: grid;
+     width: 100%;
+-    height: 100vh;
++    min-height: 100dvh;
++    height: 100dvh;
+     grid-template-columns: minmax(60px, 5%) 1fr;
+     overflow-x: hidden;
++    overflow-y: auto;
++    background-size: inherit;
++    background-position: inherit;
+ }
+ 
+ .ea-skip-link {
+diff --git a/assets/css/master/sections.master.css b/assets/css/master/sections.master.css
+index 57582f5..dfaefa0 100644
+--- a/assets/css/master/sections.master.css
++++ b/assets/css/master/sections.master.css
+@@ -1,19 +1,23 @@
+ /* --- SCROLL CONTAINER --- */
+ #ea-page-content {
+-    height:100vh;
+-    overflow-y:auto;
+-    scroll-snap-type:y mandatory;
+-    scroll-behavior:smooth;
++    min-height: 100dvh;
++    height: 100dvh;
++    overflow-y: auto;
++    scroll-snap-type: y mandatory;
++    scroll-behavior: smooth;
++    background-size: inherit;
++    background-position: inherit;
+ }
+ 
+ /* --- SECTION MAGNETIQUE --- */
+ .ea-section {
+     width:100%;
+-    min-height:100vh;
++    min-height:100dvh;
+     display:flex;
+     align-items:center;
+     justify-content:center;
+-    padding:var(--ea-section-vspace) var(--ea-pad);
++    padding-block: var(--ea-section-vspace);
++    padding-inline: var(--ea-pad-inline, var(--ea-pad));
+     scroll-snap-align:center;
+     scroll-snap-stop:always;
+ }
+@@ -26,16 +30,23 @@
+     flex-direction:column;
+     align-items:center;
+     justify-content:center;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ /* Container interne */
+ .ea-section > .ea-container {
+-    width:min(var(--ea-layout-max, 1200px), 90%);
++    width:100%;
++    max-width: var(--ea-content-wide, var(--ea-layout-max, 1200px));
+     height:var(--ea-view-height);
+     display:flex;
+     flex-direction:column;
+     justify-content:center;
++    align-items:center;
+     margin: 0 auto;
++    padding-inline: var(--ea-pad-inline);
++    gap: var(--ea-space-sm);
+ }
+ 
+ /* --- PREVIEW / DETAIL MODES --- */
+@@ -44,13 +55,14 @@
+     width:100%;
+     display:flex;
+     flex-direction:column;
+-    gap:1rem;
++    gap: clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md));
+     align-items:flex-start;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
+ }
+ 
+ .ea-detail {
+-    padding-top:1rem;
+-    max-width:100%;
++    padding-top: clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md));
+ }
+ 
+ .ea-detail[hidden] {
+@@ -59,7 +71,7 @@
+ 
+ .ea-section--open .ea-container {
+     height:auto;
+-    min-height:100vh;
++    min-height:100dvh;
+ }
+ 
+ .ea-mode-detail .ea-section--open .ea-container {
+@@ -105,7 +117,7 @@
+ .ea-content--detail#ea-page-content {
+     padding:0;
+     height:auto;
+-    min-height:100vh;
++    min-height:100dvh;
+     scroll-snap-type:none;
+     width:100%;
+ }
+@@ -116,18 +128,18 @@
+     height:auto;
+     justify-content:flex-start;
+     align-items:center;
+-    padding-top:4rem;
+-    padding-bottom:4rem;
++    padding-top: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
++    padding-bottom: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
+ }
+ 
+ .ea-content--detail .ea-section .ea-container {
+     min-height:auto;
+     height:auto;
+     align-items:flex-start;
+-    max-width:var(--ea-layout-max);
++    max-width:var(--ea-content-wide);
+     width:100%;
+     margin:0 auto;
+-    padding:0 2.5rem 3.5rem;
++    padding:0 var(--ea-pad-inline) clamp(var(--ea-space-lg), 5vw, var(--ea-space-xl));
+ }
+ 
+ .ea-content--detail .ea-view {
+@@ -136,6 +148,9 @@
+     align-items:flex-start;
+     justify-content:flex-start;
+     width:100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ea-content--detail .ea-section > .ea-container {
+@@ -170,21 +185,27 @@
+     }
+     .ea-section {
+         align-items: flex-start;
+-        padding: clamp(var(--ea-space-lg), 12vh, var(--ea-section-vspace)) clamp(1.25rem, 6vw, 2.4rem);
++        padding-block: clamp(var(--ea-space-lg), 12dvh, var(--ea-section-vspace));
++        padding-inline: var(--ea-pad-inline);
+         scroll-snap-align: unset;
+         scroll-snap-stop: unset;
+         min-height: auto;
+     }
+     .ea-section > .ea-container {
+-        width: min(var(--ea-layout-max, 1200px), 96%);
++        width: 100%;
++        max-width: var(--ea-content-wide);
+         height: auto;
+         min-height: auto;
+         margin: 0 auto;
++        padding-inline: var(--ea-pad-inline);
+     }
+     .ea-view {
+         height: auto;
+         min-height: auto;
+         justify-content: flex-start;
++        max-width: var(--ea-content-max);
++        margin-inline: auto;
++        padding-inline: var(--ea-pad-inline);
+     }
+     .ea-preview,
+     .ea-detail {
+@@ -195,7 +216,7 @@
+         padding-bottom: var(--ea-space-xl);
+     }
+     .ea-content--detail .ea-section .ea-container {
+-        padding: 0 clamp(1.25rem, 6vw, 2.25rem) clamp(2.5rem, 7vw, 3rem);
++        padding: 0 var(--ea-pad-inline) clamp(2.5rem, 7vw, 3rem);
+     }
+     .ea-section--open .ea-container {
+         min-height: auto;
+diff --git a/assets/css/tokens/ea.tokens.css b/assets/css/tokens/ea.tokens.css
+index 1439dbf..0cf76f7 100644
+--- a/assets/css/tokens/ea.tokens.css
++++ b/assets/css/tokens/ea.tokens.css
+@@ -19,35 +19,39 @@
+ 
+     /* TYPOGRAPHY */
+     --ea-font-main: 'Inter', sans-serif;
+-    --ea-font-size-sm: .9rem;
+-    --ea-font-size-md: 1rem;
+-    --ea-font-size-lg: 1.6rem;
+-    --ea-font-size-xl: 2.4rem;
+-    --ea-font-size-xxl: 4rem;
+-    --ea-leading-sm: 1.3;
+-    --ea-leading-md: 1.5;
+-    --ea-leading-lg: 1.7;
++    --ea-font-size-sm: clamp(.85rem, .6vw + .82rem, .95rem);
++    --ea-font-size-md: clamp(1rem, .5vw + .95rem, 1.15rem);
++    --ea-font-size-lg: clamp(1.25rem, 1vw + 1.05rem, 1.8rem);
++    --ea-font-size-xl: clamp(1.75rem, 1.6vw + 1.2rem, 2.6rem);
++    --ea-font-size-xxl: clamp(2.4rem, 3vw + 1.4rem, 3.8rem);
++    --ea-leading-sm: 1.4;
++    --ea-leading-md: 1.55;
++    --ea-leading-lg: 1.65;
+     --ea-weight-regular: 400;
+     --ea-weight-medium: 500;
+     --ea-weight-semibold: 600;
+ 
+     /* LAYOUT */
+-    --ea-container-max: 75rem;
++    --ea-content-max: clamp(60ch, 80vw, 90ch);
++    --ea-content-wide: clamp(68ch, 86vw, 72rem);
++    --ea-container-max: var(--ea-content-wide);
+     --ea-layout-max: var(--ea-container-max);
+     --ea-max-width: var(--ea-layout-max); /* legacy alias */
+     --ea-max: var(--ea-layout-max);       /* legacy alias */
+-    --ea-space-xs: .5rem;
+-    --ea-space-sm: .75rem;
+-    --ea-space-md: 1.25rem;
+-    --ea-space-lg: 2rem;
+-    --ea-space-xl: 3.5rem;
+-    --ea-space-xxl: 6rem;
+-    --ea-pad: var(--ea-space-lg);
+-    --ea-section-vspace: var(--ea-space-xxl);
+-    --ea-view-height: 80vh;
+-    --ea-grid-gap: var(--ea-space-lg);
+-    --ea-grid-gap-tight: var(--ea-space-md);
+-    --ea-grid-col-min: 16rem;
++    --ea-space-xs: clamp(.45rem, .7vw, .65rem);
++    --ea-space-sm: clamp(.7rem, 1vw, .95rem);
++    --ea-space-md: clamp(1rem, 1.6vw, 1.5rem);
++    --ea-space-lg: clamp(1.5rem, 3vw, 2.5rem);
++    --ea-space-xl: clamp(2.25rem, 4.5vw, 3.75rem);
++    --ea-space-xxl: clamp(3rem, 8vw, 6rem);
++    --ea-pad-inline: clamp(1rem, 4vw, 3rem);
++    --ea-pad-block: clamp(1.5rem, 6dvh, 3rem);
++    --ea-pad: var(--ea-pad-inline);
++    --ea-section-vspace: clamp(3rem, 12dvh, 6.5rem);
++    --ea-view-height: 80dvh;
++    --ea-grid-gap: clamp(1.25rem, 3vw, 2.5rem);
++    --ea-grid-gap-tight: clamp(1rem, 2vw, 1.75rem);
++    --ea-grid-col-min: clamp(15rem, 26vw, 20rem);
+ 
+     /* RADIUS */
+     --ea-radius-xs: .25rem;
+diff --git a/assets/css/ui/components/ea.accordion.css b/assets/css/ui/components/ea.accordion.css
+index 6ff1e73..b059929 100644
+--- a/assets/css/ui/components/ea.accordion.css
++++ b/assets/css/ui/components/ea.accordion.css
+@@ -1,7 +1,12 @@
+-.ea-accordion { width:100%; }
++.ea-accordion {
++    width:100%;
++    max-width:var(--ea-content-max);
++    margin-inline:auto;
++    padding-inline:var(--ea-pad-inline);
++}
+ .ea-acc-item {
+     border-bottom:1px solid rgba(255,255,255,.12);
+-    padding:1rem 0;
++    padding:clamp(var(--ea-space-sm), 1.4vw, var(--ea-space-md)) 0;
+ }
+ .ea-acc-title {
+     cursor:pointer;
+diff --git a/assets/css/ui/components/ea.badges.css b/assets/css/ui/components/ea.badges.css
+index 0f40979..f58eb58 100644
+--- a/assets/css/ui/components/ea.badges.css
++++ b/assets/css/ui/components/ea.badges.css
+@@ -1,16 +1,19 @@
+ .ea-badge {
+     display:inline-block;
+-    padding:.4rem .8rem;
++    padding:clamp(.35rem, .8vw, .5rem) clamp(.7rem, 1.5vw, .95rem);
+     border-radius:var(--ea-radius-md);
+     background:rgba(255,255,255,.08);
+     color:var(--ea-fg-soft);
+-    font-size:.85rem;
++    font-size:clamp(.82rem, 1vw, .95rem);
+     letter-spacing:.5px;
+ }
+ .ea-keypill {
+-    padding:.5rem 1rem;
++    padding:clamp(.4rem, 1vw, .6rem) clamp(.9rem, 1.6vw, 1.1rem);
+     border:1px solid rgba(255,255,255,.1);
+     border-radius:2rem;
+-    font-size:.8rem;
++    font-size:clamp(.78rem, .9vw, .92rem);
+     opacity:.8;
++    display:inline-flex;
++    align-items:center;
++    justify-content:center;
+ }
+diff --git a/assets/css/ui/components/ea.cards.css b/assets/css/ui/components/ea.cards.css
+index e269f8e..2b65554 100644
+--- a/assets/css/ui/components/ea.cards.css
++++ b/assets/css/ui/components/ea.cards.css
+@@ -1,13 +1,19 @@
+ .ea-card {
+     background:rgba(255,255,255,.03);
+     border:1px solid rgba(255,255,255,.06);
+-    padding:2rem;
++    padding:clamp(1.25rem, 3vw, 2.25rem);
+     border-radius:var(--ea-radius-lg);
+     box-shadow:var(--ea-shadow-soft);
++    width:100%;
++    max-width:var(--ea-content-max);
++    margin-inline:auto;
+ }
+ .ea-card-profile {
+     text-align:center;
+-    padding:3rem;
++    padding:clamp(2rem, 4vw, 3rem);
+     border-radius:var(--ea-radius-lg);
+     background:rgba(255,255,255,.02);
++    width:100%;
++    max-width:var(--ea-content-max);
++    margin-inline:auto;
+ }
+diff --git a/assets/css/ui/components/ea.metrics.css b/assets/css/ui/components/ea.metrics.css
+index ed7bd05..117cce6 100644
+--- a/assets/css/ui/components/ea.metrics.css
++++ b/assets/css/ui/components/ea.metrics.css
+@@ -1,9 +1,11 @@
+ .ea-metric {
+-    font-size:2rem;
++    font-size:var(--ea-font-size-xl);
+     font-weight:600;
+     color:var(--ea-accent-1);
+ }
+ .ea-bio-metrics {
+     display:flex;
+-    gap:2rem;
++    gap:clamp(1.25rem, 3vw, 2rem);
++    flex-wrap:wrap;
++    justify-content:center;
+ }
+diff --git a/assets/css/ui/components/ea.timeline.css b/assets/css/ui/components/ea.timeline.css
+index 83a7be0..384b656 100644
+--- a/assets/css/ui/components/ea.timeline.css
++++ b/assets/css/ui/components/ea.timeline.css
+@@ -1,10 +1,14 @@
+ .ea-timeline-vertical {
+     display:flex;
+     flex-direction:column;
+-    gap:2rem;
++    gap:clamp(1.5rem, 3vw, 2.5rem);
+     border-left:1px solid rgba(255,255,255,.12);
+-    padding-left:2rem;
++    padding-left:clamp(var(--ea-space-md), 2vw, var(--ea-space-lg));
++    padding-right:var(--ea-pad-inline, var(--ea-space-md));
++    width:100%;
++    max-width:var(--ea-content-max);
++    margin-inline:auto;
+ }
+ .ea-phase-card {
+-    padding:1rem 0;
++    padding:clamp(var(--ea-space-sm), 1.6vw, var(--ea-space-md)) 0;
+ }
+diff --git a/assets/css/ui/ux-layer.css b/assets/css/ui/ux-layer.css
+index b5862fb..8ddc2e6 100644
+--- a/assets/css/ui/ux-layer.css
++++ b/assets/css/ui/ux-layer.css
+@@ -7,7 +7,8 @@
+     font-weight: var(--ea-weight-semibold);
+     color: var(--ea-fg);
+     margin: 0 0 var(--ea-space-sm);
+-    max-width: 72ch;
++    max-width: var(--ea-content-max, 72ch);
++    margin-inline: auto;
+ }
+ 
+ .ux-subtitle {
+@@ -16,7 +17,8 @@
+     font-weight: var(--ea-weight-semibold);
+     color: var(--ea-fg);
+     margin: 0 0 var(--ea-space-sm);
+-    max-width: 72ch;
++    max-width: var(--ea-content-max, 72ch);
++    margin-inline: auto;
+ }
+ 
+ .ux-lead {
+@@ -24,14 +26,16 @@
+     line-height: var(--ea-leading-lg);
+     font-weight: var(--ea-weight-medium);
+     color: var(--ea-fg-soft);
+-    max-width: 74ch;
++    max-width: var(--ea-content-max, 74ch);
++    margin-inline: auto;
+ }
+ 
+ .ux-paragraph {
+     font-size: clamp(1rem, 1.6vw, var(--ea-font-size-md));
+     line-height: var(--ea-leading-md);
+     color: var(--ea-fg);
+-    max-width: 74ch;
++    max-width: var(--ea-content-max, 74ch);
++    margin-inline: auto;
+ }
+ 
+ .ux-label {
+@@ -92,6 +96,9 @@
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-sm);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
+ }
+ 
+ .ux-highlight {
+@@ -99,6 +106,9 @@
+     border-radius: var(--ea-radius-lg);
+     background: var(--ea-surface-2);
+     border: .0625rem solid var(--ea-surface-3);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
+ }
+ 
+ .ux-quote {
+@@ -107,6 +117,9 @@
+     background: var(--ea-surface-1);
+     border-radius: var(--ea-radius-md);
+     color: var(--ea-fg);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
+ }
+ 
+ .ux-note {
+@@ -115,6 +128,9 @@
+     background: var(--ea-surface-1);
+     color: var(--ea-fg-soft);
+     border: .0625rem solid var(--ea-surface-2);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
+ }
+ 
+ .ux-cta {
+@@ -126,6 +142,9 @@
+     border: .0625rem solid var(--ea-surface-3);
+     color: var(--ea-fg);
+     background: var(--ea-surface-2);
++    justify-content: center;
++    margin-inline: auto;
++    text-align: center;
+     transition:
+         transform var(--ea-dur-fast) var(--ea-ease-standard),
+         border-color var(--ea-dur-fast) var(--ea-ease-standard),
+@@ -172,6 +191,9 @@
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-sm);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
+ }
+ 
+ .ux-list {
+@@ -207,6 +229,8 @@
+     border-radius: var(--ea-radius-lg);
+     background: var(--ea-surface-1);
+     border: .0625rem dashed var(--ea-surface-3);
++    max-width: var(--ea-content-wide, var(--ea-content-max));
++    margin-inline: auto;
+ }
+ 
+ /* Layouts */
+@@ -214,26 +238,41 @@
+ .ea-stack {
+     display: flex;
+     flex-direction: column;
+-    gap: var(--ea-space-md);
+-    max-width: 82ch;
++    gap: clamp(var(--ea-space-sm), 1.5vw, var(--ea-space-md));
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-grid-2 {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
+     gap: var(--ea-grid-gap);
++    width: 100%;
++    max-width: var(--ea-content-wide, var(--ea-content-max));
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-grid-3 {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
+     gap: var(--ea-grid-gap);
++    width: 100%;
++    max-width: var(--ea-content-wide, var(--ea-content-max));
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-section-group {
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-xl);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-side-note {
+@@ -241,6 +280,10 @@
+     grid-template-columns: minmax(12rem, 1fr) 2fr;
+     gap: var(--ea-grid-gap-tight);
+     align-items: start;
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-timeline,
+@@ -250,6 +293,10 @@
+     gap: var(--ea-space-lg);
+     border-left: .0625rem solid var(--ea-surface-3);
+     padding-left: var(--ea-space-lg);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-right: var(--ea-pad-inline);
+ }
+ 
+ .ux-timeline .ux-timeline-item,
+@@ -265,6 +312,9 @@
+     width: 100%;
+     display: flex;
+     flex-direction: column;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-accordion .ux-acc-item,
+@@ -364,6 +414,7 @@
+   background: rgba(255,255,255,0.06);
+   border: 1px solid rgba(255,255,255,0.12);
+   margin-bottom: var(--ea-space-sm);
++  margin-inline: auto;
+   text-decoration: none;
+   color: var(--ea-fg);
+   font-weight: var(--ea-weight-medium);
+@@ -397,6 +448,10 @@
+   gap: var(--ea-space-xs);
+   justify-content: center;
+   align-items: center;
++  width: 100%;
++  max-width: var(--ea-content-max);
++  margin-inline: auto;
++  padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ea-footer {
+diff --git a/assets/css/ui/ux-patterns.css b/assets/css/ui/ux-patterns.css
+index fb6a5ef..c8ee520 100644
+--- a/assets/css/ui/ux-patterns.css
++++ b/assets/css/ui/ux-patterns.css
+@@ -4,6 +4,10 @@
+     display: grid;
+     gap: var(--ea-grid-gap);
+     align-items: center;
++    width: 100%;
++    max-width: var(--ea-content-wide, var(--ea-content-max));
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ @media (min-width: var(--ea-bp-md)) {
+@@ -16,18 +20,29 @@
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-lg);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-section-value-proof .ux-proof-list {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
+     gap: var(--ea-grid-gap-tight);
++    width: 100%;
++    max-width: var(--ea-content-wide, var(--ea-content-max));
++    margin-inline: auto;
+ }
+ 
+ .ux-manifesto {
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-xl);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-manifesto .ux-manifesto-block {
+@@ -40,20 +55,33 @@
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-lg);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-case-study .ux-case-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(var(--ea-grid-col-min), 1fr));
+     gap: var(--ea-grid-gap);
++    width: 100%;
++    max-width: var(--ea-content-wide, var(--ea-content-max));
++    margin-inline: auto;
+ }
+ 
+ .ux-faq {
+     display: flex;
+     flex-direction: column;
+     gap: var(--ea-space-md);
++    width: 100%;
++    max-width: var(--ea-content-max);
++    margin-inline: auto;
++    padding-inline: var(--ea-pad-inline);
+ }
+ 
+ .ux-faq .ux-accordion {
+     gap: var(--ea-space-sm);
++    width: 100%;
++    max-width: var(--ea-content-max);
+ }
+diff --git a/RESPONSIVE_FINAL_AUDIT.md b/RESPONSIVE_FINAL_AUDIT.md
+new file mode 100644
+index 0000000..327c231
+--- /dev/null
++++ b/RESPONSIVE_FINAL_AUDIT.md
+@@ -0,0 +1,8 @@
++# Responsive Final Audit (Sprint 11B)
++
++- Scope respecté : uniquement `assets/css/{core,master,ui}` (+ tokens), aucune modification du menu, scroll-snap, halos, router/loader.
++- Centrage : `--ea-content-max`/`--ea-content-wide` + `margin-inline:auto` appliqués aux conteneurs (`.ea-container`, `.ea-section > .ea-container`), stacks/grids/patterns, blocks/quotes/CTA/tags; padding-inline commun `clamp(1rem, 4vw, 3rem)`.
++- Fluidité : nouvelle échelle typo/leading en `clamp`, espaces/paddings/grids clampés; grilles 3→2→1 conservées avec `--ea-grid-col-min` fluide et gaps clampés.
++- iOS bande noire : `body`, `#ea-root`, `#ea-layout`, `#ea-page-content`, `--ea-view-height` passés en `dvh` + `min-height:100dvh`, backgrounds cover/center, overflow-y auto sur wrappers; aucune touche au scroll engine.
++- Densité mobile : gaps/paddings réduits via tokens, cards/badges/accordéons/timeline/metrics réajustés (clamp, wrap-safe, max-width centrés) pour éviter l’overflow horizontal.
++- Points de vigilance QA : vérifier sur device iOS (safe-area + scroll-snap), contrôler l’alignement centré des blocs dans les pages longues, s’assurer que les CTA/badges restent lisibles en très petit viewport.
+diff --git a/SPRINT_11B_REPORT.md b/SPRINT_11B_REPORT.md
+new file mode 100644
+index 0000000..9c137b5
+--- /dev/null
++++ b/SPRINT_11B_REPORT.md
+@@ -0,0 +1,9 @@
++# Sprint 11B — Responsive Perfect Polish
++
++- Objet : polir la couche CSS sans toucher au moteur (menu, scroll-snap, router, halos), recentrer tous les contenus et corriger la bande noire iOS.
++- Actions :
++  - Tokens fluidifiés (typo, espaces, padding inline/block, grilles) + dvh partout (`body`, `#ea-root`, `#ea-layout`, `#ea-page-content`, `--ea-view-height`).
++  - Recentrage robuste : `max-width` clampé + `margin-inline:auto` sur conteneurs, stacks, grilles, blocks, quotes, CTA/tags, patterns; padding-inline harmonisé.
++  - Composants resserrés (cards, badges, accordéons, timeline, metrics) avec clamp et wrap-safe; grilles 3→2→1 conservées.
++- Risques/QA : vérifier sur device iOS réel (safe-area et scroll-snap), passer un smoke responsive (mob/tab/desk) et contrôler l’absence d’overflow horizontal.
++- Livrables : RESPONSIVE_FINAL_AUDIT.md, RESPONSIVE_FINAL_DIFF.patch (présent), mise à jour SPRINT_PLAN.md (Sprint 11B done).
