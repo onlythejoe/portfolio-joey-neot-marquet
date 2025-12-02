@@ -1,0 +1,9 @@
+[
+  "Line-heights mobile non harmonisées (titles/leads) malgré clamp",
+  "Centrage horizontal des tags/CTA non garanti (flex start par défaut)",
+  "ux-grid-3 pas de palier tablette (2 colonnes avant 1 col mobile)",
+  "Stacks/blocks : padding highlights/quotes/notes encore généreux pour petits écrans",
+  "CTA padding fixe sans clamp, wrap non explicite pour plusieurs CTA",
+  "ea-container width min laisse asymétries sur tablette large (90%/96% sans max tweak)",
+  "Max-width texte mobile non forcé (CPL > 75ch possible en petits viewports si font clamp réduit)"
+] 

@@ -35,6 +35,7 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
+    margin: 0 auto;
 }
 
 /* --- PREVIEW / DETAIL MODES --- */
@@ -178,6 +179,7 @@
         width: min(var(--ea-layout-max, 1200px), 96%);
         height: auto;
         min-height: auto;
+        margin: 0 auto;
     }
     .ea-view {
         height: auto;

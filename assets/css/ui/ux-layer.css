@@ -24,14 +24,14 @@
     line-height: var(--ea-leading-lg);
     font-weight: var(--ea-weight-medium);
     color: var(--ea-fg-soft);
-    max-width: 78ch;
+    max-width: 74ch;
 }
 
 .ux-paragraph {
     font-size: clamp(1rem, 1.6vw, var(--ea-font-size-md));
     line-height: var(--ea-leading-md);
     color: var(--ea-fg);
-    max-width: 78ch;
+    max-width: 74ch;
 }
 
 .ux-label {
@@ -95,14 +95,14 @@
 }
 
 .ux-highlight {
-    padding: var(--ea-space-lg);
+    padding: clamp(1.25rem, 3vw, var(--ea-space-lg));
     border-radius: var(--ea-radius-lg);
     background: var(--ea-surface-2);
     border: .0625rem solid var(--ea-surface-3);
 }
 
 .ux-quote {
-    padding: var(--ea-space-md) var(--ea-space-lg);
+    padding: clamp(1rem, 2.4vw, var(--ea-space-md)) clamp(1.4rem, 3vw, var(--ea-space-lg));
     border-left: .125rem solid var(--ea-accent-2);
     background: var(--ea-surface-1);
     border-radius: var(--ea-radius-md);
@@ -110,7 +110,7 @@
 }
 
 .ux-note {
-    padding: var(--ea-space-md);
+    padding: clamp(1rem, 2.4vw, var(--ea-space-md));
     border-radius: var(--ea-radius-md);
     background: var(--ea-surface-1);
     color: var(--ea-fg-soft);
@@ -306,7 +306,7 @@
 
 @media (max-width: var(--ea-bp-lg)) {
     .ux-grid-3 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -326,6 +326,11 @@
     .ea-stack {
         gap: var(--ea-space-sm);
         max-width: 100%;
+    }
+    .ux-lead,
+    .ux-paragraph {
+        max-width: 68ch;
+        line-height: 1.55;
     }
     .ux-grid-2,
     .ux-grid-3 {
@@ -350,8 +355,11 @@
 
 /* CTA amélioré */
 .ux-cta {
-  display: inline-block;
-  padding: var(--ea-space-sm) var(--ea-space-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: clamp(.65rem, 2.4vw, var(--ea-space-sm)) clamp(1rem, 3vw, var(--ea-space-md));
   border-radius: var(--ea-radius-md);
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
@@ -387,6 +395,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--ea-space-xs);
+  justify-content: center;
+  align-items: center;
 }
 
 .ea-footer {

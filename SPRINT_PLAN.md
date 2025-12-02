@@ -38,3 +38,8 @@
 - Audit responsive complet (pages + CSS), cartographie des points à corriger. [✔️ DONE — 2025-12-06]
 - Clamp typo, CPL limité, grilles repliées (ux-grid-2/3), padding/gaps mobiles réduits, tags/CTA wrap-safe, overflow-x hidden. [✔️ DONE — 2025-12-06]
 - Rapports livrés (audit, issues, CSS map, diff, report). [✔️ DONE — 2025-12-06]
+
+**Sprint 10 — Responsive ultra-polish**
+- Audit v2 (typographies, grilles, alignement tags/CTA, paddings, overflow) et cartographie. [✔️ DONE — 2025-12-06]
+- Ajustements CSS : CPL resserré, line-height mobile, grids 3→2 cols tablette puis 1 mobile, tags/CTA centrés et wrap, padding clampé, containers centrés, overflow-x protégé. [✔️ DONE — 2025-12-06]
+- Livrables (audit/issue/map/report/diff) produits. [✔️ DONE — 2025-12-06]
