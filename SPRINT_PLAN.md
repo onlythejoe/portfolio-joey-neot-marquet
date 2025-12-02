@@ -20,6 +20,6 @@
 - Activer un pipeline de build léger (Vite/Rollup) pour bundler/minifier CSS/JS, gérer les versions, préparer un hébergement.
 
 **Sprint 5 — Perf & QA**
-- Mesures Lighthouse (perf/a11y/best practices/SEO), bench bundle size, audit scroll-snap sur mobile.
-- Tests fonctionnels simples (open/back, popstate, navigation menu, fallback offline) + linters (stylelint/eslint minimal).
-- Ajuster animations (GPU-friendly, pas de layout thrash), lazy-load assets visuels quand ajoutés.
+- Mesures Lighthouse (perf/a11y/best practices/SEO), bench bundle size, audit scroll-snap sur mobile. [✔️ DONE — 2025-12-01]
+- Tests fonctionnels simples (open/back, popstate, navigation menu, fallback offline) + linters (stylelint/eslint minimal). [✔️ DONE — 2025-12-01]
+- Ajuster animations (GPU-friendly, pas de layout thrash), lazy-load assets visuels quand ajoutés. [✔️ DONE — 2025-12-01]

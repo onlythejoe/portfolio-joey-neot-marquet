@@ -12,6 +12,29 @@
     grid-template-columns: minmax(60px, 5%) 1fr;
 }
 
+.ea-skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.ea-skip-link:focus-visible {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.6rem 1rem;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    border: 2px solid var(--ea-accent-2, #4af);
+    border-radius: 0.5rem;
+    z-index: 2000;
+}
+
 #ea-progress-nav {
     display: flex;
     flex-direction: column;

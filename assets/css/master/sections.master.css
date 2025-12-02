@@ -172,3 +172,13 @@
         scroll-snap-stop: unset;
     }
 }
+
+@media (max-width: var(--ea-bp-sm)) {
+    #ea-page-content {
+        scroll-snap-type: none;
+    }
+    .ea-section {
+        scroll-snap-align: unset;
+        scroll-snap-stop: unset;
+    }
+}
