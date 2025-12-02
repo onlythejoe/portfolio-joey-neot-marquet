@@ -28,3 +28,8 @@
 - Ajouter la couche `#ea-halos` (CSS+JS) sous l’UX, pilotée par palette par page, animations lentes PRM-safe. [✔️ DONE — 2025-12-05]
 - Charger les palettes depuis `assets/data/halos.datamap.json`, transition douce sur `ea-page-loaded`, fallback par défaut. [✔️ DONE — 2025-12-05]
 - Documentation d’intégration + rapport sprint. [✔️ DONE — 2025-12-05]
+
+**Sprint 8 — Optimisation des previews**
+- Réécrire et condenser toutes les previews (home, about, expertises, portfolio, vision) avec pattern UX unifié (tags, stack, leads courtes). [✔️ DONE — 2025-12-06]
+- Renforcer lisibilité mobile (2–3 lignes max), hooks clairs, respect UX Layer sans toucher aux détails. [✔️ DONE — 2025-12-06]
+- Produire audit + rewrites + diff + rapport Sprint 8. [✔️ DONE — 2025-12-06]

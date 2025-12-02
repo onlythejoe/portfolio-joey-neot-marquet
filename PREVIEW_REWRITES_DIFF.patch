@@ -1,0 +1,377 @@
+diff --git a/pages/about/bio.html b/pages/about/bio.html
+index f941437..da1755c 100644
+--- a/pages/about/bio.html
++++ b/pages/about/bio.html
+@@ -1,8 +1,16 @@
+ <section class="ea-section" data-section="bio">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Qui je suis</h2>
+-            <p>Créateur hybride à la confluence de l'art, du code et des systèmes. J’explore les zones floues où les disciplines se contaminent pour fabriquer des interfaces sensibles.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Art</span>
++                    <span class="ux-tag">Code</span>
++                    <span class="ux-tag">Systèmes</span>
++                </div>
++                <h2 class="ux-title">Qui je suis</h2>
++                <p class="ux-lead">Créateur hybride entre art, code et systèmes.</p>
++                <p class="ux-paragraph">Interfaces sensibles nées des zones floues où les disciplines se contaminent.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="bio">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/about/index.html b/pages/about/index.html
+index b724f80..7b7ffc0 100644
+--- a/pages/about/index.html
++++ b/pages/about/index.html
+@@ -1,9 +1,15 @@
+ <section class="ea-section" data-section="index">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>À propos</h2>
+-            <p>Creative technologist hybride, j’opère là où design, code et systèmes se rencontrent.</p>
+-            <p>J’assemble des interfaces sensibles, sobres et pilotées par une direction artistique claire.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Portrait</span>
++                    <span class="ux-tag">Hybridation</span>
++                </div>
++                <h2 class="ux-title">À propos</h2>
++                <p class="ux-lead">Creative technologist à l’intersection design × code × systèmes.</p>
++                <p class="ux-paragraph">Interfaces sensibles, sobres, pilotées par une DA claire.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="index">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/about/skills.html b/pages/about/skills.html
+index bdbfea9..91275ee 100644
+--- a/pages/about/skills.html
++++ b/pages/about/skills.html
+@@ -1,8 +1,17 @@
+ <section class="ea-section" data-section="skills">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Parcours & influences</h2>
+-            <p>Un chemin tracé entre design graphique, sciences de l'ingénieur et création numérique. Mon travail est façonné par plusieurs héritages qui ne cessent de dialoguer : la rigueur formelle du design graphique et sa capacité à construire des systèmes visuels lisibles, la logique structurelle des sciences de l'ingénieur et leur obsession pour l'efficacité, la vision cohérente de la direction artistique qui donne du sens à chaque décision esthétique, et la liberté exploratoire de l'autodidaxie en code qui m'a permis de construire mes propres outils sans être contraint par les conventions.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Design graphique</span>
++                    <span class="ux-tag">Ingénierie</span>
++                    <span class="ux-tag">DA</span>
++                    <span class="ux-tag">Code</span>
++                </div>
++                <h2 class="ux-title">Parcours & influences</h2>
++                <p class="ux-lead">Rigueur du design graphique, logique d’ingénieur, vision DA, liberté de l’autodidaxie code.</p>
++                <p class="ux-paragraph">Je croise ces héritages pour bâtir des systèmes lisibles et efficaces.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="skills">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/about/vision.html b/pages/about/vision.html
+index c9e5db1..64b6f8c 100644
+--- a/pages/about/vision.html
++++ b/pages/about/vision.html
+@@ -1,8 +1,16 @@
+ <section class="ea-section" data-section="vision">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Philosophie personnelle</h2>
+-            <p>Comprendre. Relier. Incarner. Trois gestes qui structurent ma pratique et qui, au fond, sont trois déclinaisons d'un même mouvement : celui qui consiste à donner forme tangible à ce qui était encore flou, à matérialiser les intuitions, à rendre visible ce qui était structure abstraite. Je ne crois pas à la création comme surgissement mystérieux, comme inspiration divine. Je crois à la création comme processus patient de compréhension, comme travail méthodique de cartographie du réel, comme élaboration progressive de systèmes qui donnent à voir ce que l'on ne voyait pas encore.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Comprendre</span>
++                    <span class="ux-tag">Relier</span>
++                    <span class="ux-tag">Incarner</span>
++                </div>
++                <h2 class="ux-title">Philosophie personnelle</h2>
++                <p class="ux-lead">Donner une forme tangible à ce qui était flou, cartographier le réel par le design et le code.</p>
++                <p class="ux-paragraph">Création comme méthode de compréhension, pas comme décor.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="vision">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/expertises/conseils.html b/pages/expertises/conseils.html
+index db5a6f1..0923ec9 100644
+--- a/pages/expertises/conseils.html
++++ b/pages/expertises/conseils.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="conseils">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Stratégie & Pilotage</h2>
+-            <p>Vision · UX · Organisation · Gestion de projet.<br>
+-Mon expertise ne se limite pas à la production technique ou visuelle : elle s'étend à la capacité d'orchestrer des projets, de penser en chef de projet autant qu'en créateur, de naviguer entre vision stratégique et exécution concrète. J'aime autant piloter un système que le développer, autant structurer une roadmap que coder une fonctionnalité, autant documenter un processus que le prototyper. Cette dimension stratégique et organisationnelle n'est pas pour moi une compétence secondaire : elle fait partie intégrante de ma pratique de creative technologist.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Vision</span>
++                    <span class="ux-tag">Roadmap</span>
++                    <span class="ux-tag">QA</span>
++                </div>
++                <h2 class="ux-title">Stratégie & Pilotage</h2>
++                <p class="ux-lead">Vision, UX, organisation, gestion de projet.</p>
++                <p class="ux-paragraph">Je orchestre roadmap, documentation et QA pour aligner DA et dev.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="conseils">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/expertises/direction-artistique.html b/pages/expertises/direction-artistique.html
+index 92fb27a..8c47189 100644
+--- a/pages/expertises/direction-artistique.html
++++ b/pages/expertises/direction-artistique.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="direction-artistique">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Design & Direction Artistique</h2>
+-            <p>Webdesign premium · Interfaces sensibles · Cohérence visuelle.<br>
+-Mon approche du design ne se limite pas à l'habillage visuel de fonctionnalités préexistantes : elle consiste à penser l'esthétique et la structure comme indissociables, à concevoir des interfaces où la beauté émane directement de la logique sous-jacente plutôt que de s'y superposer. Je conçois des univers visuels précis et cohérents où chaque décision esthétique est justifiable, où chaque animation porte un sens, où chaque effet révèle quelque chose de la nature du système qu'il habille. Je préfère le code à l'image figée, les systèmes vivants aux décorations inertes, les interfaces qui respirent à celles qui éblouissent.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">DA</span>
++                    <span class="ux-tag">Webdesign</span>
++                    <span class="ux-tag">Motion</span>
++                </div>
++                <h2 class="ux-title">Design & Direction Artistique</h2>
++                <p class="ux-lead">Webdesign premium, interfaces sensibles, cohérence visuelle pilotée par la structure.</p>
++                <p class="ux-paragraph">Forme et fonction indissociables : univers précis, animations utiles, systèmes vivants plutôt que décors.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="direction-artistique">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/expertises/index.html b/pages/expertises/index.html
+index 6f83c69..6632989 100644
+--- a/pages/expertises/index.html
++++ b/pages/expertises/index.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="index">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Expertises</h2>
+-            <p>Architecture front, design system, prototypage rapide.</p>
+-            <p>Je conçois des interfaces sensibles avec du code léger et mesurable.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Architecture</span>
++                    <span class="ux-tag">Design system</span>
++                    <span class="ux-tag">Prototypage</span>
++                </div>
++                <h2 class="ux-title">Expertises</h2>
++                <p class="ux-lead">Architecture front, design system, prototypage rapide.</p>
++                <p class="ux-paragraph">Interfaces sensibles, code léger, impact mesurable.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="index">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/expertises/systems-engineering.html b/pages/expertises/systems-engineering.html
+index 482853d..3cb8145 100644
+--- a/pages/expertises/systems-engineering.html
++++ b/pages/expertises/systems-engineering.html
+@@ -1,8 +1,16 @@
+ <section class="ea-section" data-section="systems-engineering">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Tech & Recherche</h2>
+-            <p>Frameworks · Systèmes · Automations · R&amp;D. Mon expertise technique ne se limite pas à l'utilisation d'outils existants : elle repose sur la capacité à concevoir mes propres systèmes quand ceux qui existent ne correspondent pas à ma vision. Je développe des micro-frameworks front-end sur mesure comme EA Lite ou EA_HelixFlow, je structure des architectures modulaires qui s'assemblent comme des organismes vivants, je construis des pipelines automatisés qui orchestrent le déploiement et la documentation sans intervention humaine, et je code dans plusieurs langages selon la nature du problème à résoudre Rust pour la performance brute, JavaScript et TypeScript pour la fluidité front-end, Python pour l'analyse de données et l'automatisation, SQL pour les architectures de bases de données complexes.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Frameworks</span>
++                    <span class="ux-tag">Automations</span>
++                    <span class="ux-tag">R&amp;D</span>
++                </div>
++                <h2 class="ux-title">Tech & Recherche</h2>
++                <p class="ux-lead">Frameworks sur mesure (EA Lite), architectures modulaires, pipelines automatisés.</p>
++                <p class="ux-paragraph">JS/TS, Rust, Python, SQL : je forge mes outils quand les standards ne suffisent pas.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="systems-engineering">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/home/hero.html b/pages/home/hero.html
+index e87ab57..fc61c47 100644
+--- a/pages/home/hero.html
++++ b/pages/home/hero.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="hero">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Creative Technologist</h2>
+-            <p>Design × systèmes × code. Interfaces sensibles, micro-frameworks maison et direction produit premium.</p>
+-            <p>Navigation fluide, expérience continue, esthétique intégrée : EA Lite est mon terrain d’expression.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Design</span>
++                    <span class="ux-tag">Systèmes</span>
++                    <span class="ux-tag">Code</span>
++                </div>
++                <h2 class="ux-title">Creative technologist</h2>
++                <p class="ux-lead">Interfaces sensibles, micro-frameworks maison, direction produit premium.</p>
++                <p class="ux-paragraph">Navigation continue, esthétique intégrée, zéro dépendance.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="hero">↘ Découvrir mon approche</button>
+         </div>
+ 
+diff --git a/pages/home/index.html b/pages/home/index.html
+index 15719e0..7a39cc4 100644
+--- a/pages/home/index.html
++++ b/pages/home/index.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="index">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Aperçu du portfolio</h2>
+-            <p>Frameworks, prototypes, interfaces premium. Un laboratoire en évolution continue.</p>
+-            <p>Chaque section répond à une question concrète : fluidité, performance, narration produit.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Lab</span>
++                    <span class="ux-tag">Framework</span>
++                    <span class="ux-tag">UX</span>
++                </div>
++                <h2 class="ux-title">Aperçu du laboratoire</h2>
++                <p class="ux-lead">Frameworks, prototypes, interfaces premium : EA Lite en démo directe.</p>
++                <p class="ux-paragraph">Chaque section teste fluidité, performance et narration produit.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="index">↘ Explorer le laboratoire</button>
+         </div>
+ 
+diff --git a/pages/home/intro.html b/pages/home/intro.html
+index da163df..f7d8fa5 100644
+--- a/pages/home/intro.html
++++ b/pages/home/intro.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="intro">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>ADN hybride</h2>
+-            <p>Design, code, systèmes, pilotage. Une seule pratique, plusieurs couches.</p>
+-            <p>Je croise intention créative, architecture technique et delivery pour produire des expériences complètes.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Design</span>
++                    <span class="ux-tag">Code</span>
++                    <span class="ux-tag">Pilotage</span>
++                </div>
++                <h2 class="ux-title">ADN hybride</h2>
++                <p class="ux-lead">Design, code, systèmes : une seule pratique, plusieurs couches coordonnées.</p>
++                <p class="ux-paragraph">Intention créative + architecture technique + delivery mesurable.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="intro">↘ Comprendre l’approche</button>
+         </div>
+ 
+diff --git a/pages/portfolio/index.html b/pages/portfolio/index.html
+index 90a5902..c1ab471 100644
+--- a/pages/portfolio/index.html
++++ b/pages/portfolio/index.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="index">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Electronic Artefacts Lite</h2>
+-            <p>Micro-framework front-end en vanilla. Navigation continue, esthétique intégrée, performance native.</p>
+-            <p>Ce portfolio est sa démonstration directe.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Micro-framework</span>
++                    <span class="ux-tag">Vanilla</span>
++                    <span class="ux-tag">UX</span>
++                </div>
++                <h2 class="ux-title">Electronic Artefacts Lite</h2>
++                <p class="ux-lead">Navigation continue, esthétique intégrée, performance native.</p>
++                <p class="ux-paragraph">Ce portfolio en est la démonstration directe.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="index">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/portfolio/project-001.html b/pages/portfolio/project-001.html
+index cc76d3e..73f037e 100644
+--- a/pages/portfolio/project-001.html
++++ b/pages/portfolio/project-001.html
+@@ -1,8 +1,16 @@
+ <section class="ea-section" data-section="project-001">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>ERP en Constellation de Microservices</h2>
+-            <p>Architecture distribuée, fiabilité, scalabilité pilotée par le design système.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Microservices</span>
++                    <span class="ux-tag">Reliability</span>
++                    <span class="ux-tag">Design System</span>
++                </div>
++                <h2 class="ux-title">ERP en constellation</h2>
++                <p class="ux-lead">Architecture distribuée, fiabilité et scalabilité pilotées par le design système.</p>
++                <p class="ux-paragraph">Cadrage, découpage, monitoring centralisé.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="project-001">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/portfolio/project-002.html b/pages/portfolio/project-002.html
+index b0c9344..c2b0203 100644
+--- a/pages/portfolio/project-002.html
++++ b/pages/portfolio/project-002.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="project-002">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Creative Studio Shots</h2>
+-            <p>UI premium, depth, glow, interfaces vivantes.</p>
+-            <p>Collection d'expériences visuelles pour tester lumière, rythme et profondeur.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">UI premium</span>
++                    <span class="ux-tag">Depth</span>
++                    <span class="ux-tag">Glow</span>
++                </div>
++                <h2 class="ux-title">Creative Studio Shots</h2>
++                <p class="ux-lead">Interfaces vivantes pour tester lumière, rythme et profondeur.</p>
++                <p class="ux-paragraph">Parallaxe subtile, halos, menus orbitaux.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="project-002">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/portfolio/project-003.html b/pages/portfolio/project-003.html
+index c6cbe6b..94b3651 100644
+--- a/pages/portfolio/project-003.html
++++ b/pages/portfolio/project-003.html
+@@ -1,8 +1,16 @@
+ <section class="ea-section" data-section="project-003">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Digital Artefacts</h2>
+-            <p>Artefacts génératifs · Objets expérimentaux. Exploration des systèmes réactifs et des esthétiques émergentes.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Génératif</span>
++                    <span class="ux-tag">Émergence</span>
++                    <span class="ux-tag">Motion</span>
++                </div>
++                <h2 class="ux-title">Digital Artefacts</h2>
++                <p class="ux-lead">Artefacts génératifs et objets expérimentaux.</p>
++                <p class="ux-paragraph">Systèmes réactifs, esthétiques émergentes, surprises contrôlées.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="project-003">↘ Voir le détail</button>
+         </div>
+ 
+diff --git a/pages/vision/manifeste.html b/pages/vision/manifeste.html
+index a087632..98d451f 100644
+--- a/pages/vision/manifeste.html
++++ b/pages/vision/manifeste.html
+@@ -1,9 +1,16 @@
+ <section class="ea-section" data-section="manifeste">
+     <div class="ea-container ea-view">
+         <div class="ea-preview">
+-            <h2>Manifeste</h2>
+-            <p>Systèmes · Interfaces sensibles · Intelligence créative.</p>
+-            <p>Je conçois des interfaces comme des organismes : logiques internes, esthétique précise, code traité comme matière. Tech, sens et DA avancent ensemble.</p>
++            <div class="ux-stack">
++                <div class="ux-tags">
++                    <span class="ux-tag">Systèmes</span>
++                    <span class="ux-tag">Interfaces sensibles</span>
++                    <span class="ux-tag">Intelligence créative</span>
++                </div>
++                <h2 class="ux-title">Manifeste</h2>
++                <p class="ux-lead">Interfaces comme organismes : logique interne, esthétique précise, code matière.</p>
++                <p class="ux-paragraph">Tech, sens et DA avancent ensemble.</p>
++            </div>
+             <button class="ea-section-open" type="button" data-section-trigger="open" data-section-target="manifeste">↘ Voir le détail</button>
+         </div>
