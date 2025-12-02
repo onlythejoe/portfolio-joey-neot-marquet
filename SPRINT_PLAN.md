@@ -23,3 +23,8 @@
 - Mesures Lighthouse (perf/a11y/best practices/SEO), bench bundle size, audit scroll-snap sur mobile. [✔️ DONE — 2025-12-01]
 - Tests fonctionnels simples (open/back, popstate, navigation menu, fallback offline) + linters (stylelint/eslint minimal). [✔️ DONE — 2025-12-01]
 - Ajuster animations (GPU-friendly, pas de layout thrash), lazy-load assets visuels quand ajoutés. [✔️ DONE — 2025-12-01]
+
+**Sprint 6 — Halos Dynamic Background**
+- Ajouter la couche `#ea-halos` (CSS+JS) sous l’UX, pilotée par palette par page, animations lentes PRM-safe. [✔️ DONE — 2025-12-05]
+- Charger les palettes depuis `assets/data/halos.datamap.json`, transition douce sur `ea-page-loaded`, fallback par défaut. [✔️ DONE — 2025-12-05]
+- Documentation d’intégration + rapport sprint. [✔️ DONE — 2025-12-05]

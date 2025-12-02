@@ -1,3 +1,6 @@
+**Mise à jour Halos (Sprint Halos)**
+- Couche `#ea-halos` fixée entre le fond et `#ea-layout`, pilotée par `assets/js/core/halos.js` + `assets/css/ui/halos.css`, palettes dans `assets/data/halos.datamap.json` ; hook sur `ea-page-loaded`, animations PRM-safe, aucun impact sur le scroll-snap.
+
 **Architecture & Organisation**
 - Stack statique vanilla : `index.html` + slots injectés depuis `layout/*.html` et `components/*.html` via `composer-global.js`; sections fetchées dynamiquement selon `config/pages.json`.
 - Redondances : `layout/head.html` réimporte `ea.master.css` (déjà dans `index.html`), `core/layout.css` et `ui/layout/ea.layout.css` définissent tous deux `.ea-container/.ea-section/.ea-view` avec des valeurs différentes.

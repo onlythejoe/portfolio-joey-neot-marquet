@@ -1,3 +1,6 @@
+**Mise à jour Halos (Sprint Halos)**
+- Arrière-plan atmosphérique (3 halos floutés) ajouté sous l’UX, couleurs pilotées par page via datamap, animations lentes et PRM respecté ; aucune interaction avec les patterns UX ni le scroll-snap.
+
 **Langage UX & Patterns**
 - Primitives riches (titles, lead, paragraph, label, meta, tags, cta) + layouts (stack, grid, side-note) et patterns (hero-detail, value-proof, manifesto, case-study). Cohérence globale mais doublons avec EA components; aucune typographie fluide ni responsive dédiée.
 - Pattern preview/detail systématique : intéressant pour la narration mais manque de variations (timeline, cards, metrics) et de transitions (aucune micro-interaction visuelle sur open/back).
