@@ -84,6 +84,10 @@
     display:none !important;
 }
 
+.ea-section--open {
+    padding-inline-start: 0;
+}
+
 .ea-section--open .ea-container {
     height:auto;
     min-height:100dvh;
