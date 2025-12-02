@@ -1,0 +1,120 @@
+diff --git a/SPRINT_PLAN.md b/SPRINT_PLAN.md
+index eae32a7..e8cda30 100644
+--- a/SPRINT_PLAN.md
++++ b/SPRINT_PLAN.md
+@@ -58,3 +58,8 @@
+ - Tokens d’espacement ajoutés (detail padding inline, axis desktop gap, pad top/bottom) pour respiration premium sans toucher au moteur. [✔️ DONE — 2025-12-02]
+ - Detail recentré mais aligné à gauche, previews desktop éloignées du progress-nav, paddings verticaux harmonisés (sections/views). [✔️ DONE — 2025-12-02]
+ - Livrables : SPACING_ISSUES.json, SPACING_DIFF.patch, SPRINT_11D_SPACING_REPORT.md. [✔️ DONE — 2025-12-02]
++
++**Sprint 11E — Detail Layout Rework**
++- Largeur desktop des détails élargie via token `--ea-detail-max-width`, padding mobile dédié, conteneurs centrés mais left-aligned. [✔️ DONE — 2025-12-02]
++- Bouton Overview/Back isolé (inline-flex, max-width fit-content, margin-bottom) pour ne plus réduire la grille; previews inchangées. [✔️ DONE — 2025-12-02]
++- Livrables : DETAIL_LAYOUT_ISSUES.json, DETAIL_LAYOUT_DIFF.patch, SPRINT_11E_DETAIL_LAYOUT_REPORT.md. [✔️ DONE — 2025-12-02]
+diff --git a/assets/css/master/sections.master.css b/assets/css/master/sections.master.css
+index f49dd33..a16e3cb 100644
+--- a/assets/css/master/sections.master.css
++++ b/assets/css/master/sections.master.css
+@@ -146,18 +146,21 @@
+     padding-bottom: var(--ea-section-pad-bottom, clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9)));
+     padding-inline: var(--ea-detail-padding-inline);
+     padding-inline-start: calc(var(--ea-content-offset-left) + 0px);
++    max-width: var(--ea-detail-max-width);
++    margin-inline: auto;
+ }
+ 
+ .ea-content--detail .ea-section .ea-container {
+     min-height:auto;
+     height:auto;
+     align-items:flex-start;
+-    max-width:var(--ea-content-wide);
++    max-width: var(--ea-detail-max-width);
+     width:100%;
+     margin-inline-start: 0;
+     margin-inline-end: auto;
+     padding:0 var(--ea-detail-padding-inline) clamp(var(--ea-space-lg), 5vw, var(--ea-space-xl));
+-    width:min(var(--ea-content-wide), calc(100% - var(--ea-content-offset-left)));
++    width:min(var(--ea-detail-max-width), calc(100% - var(--ea-content-offset-left)));
++    text-align: left;
+ }
+ 
+ .ea-content--detail .ea-view {
+@@ -166,9 +169,8 @@
+     align-items:flex-start;
+     justify-content:flex-start;
+     width:100%;
+-    max-width: var(--ea-content-max);
+-    margin-inline-start: 0;
+-    margin-inline-end: auto;
++    max-width: var(--ea-detail-max-width);
++    margin-inline: auto;
+     padding-inline: var(--ea-detail-padding-inline);
+     text-align: left;
+ }
+@@ -227,10 +229,9 @@
+         height: auto;
+         min-height: auto;
+         justify-content: flex-start;
+-        max-width: var(--ea-content-max);
+-        margin-inline-start: 0;
+-        margin-inline-end: auto;
+-        padding-inline: var(--ea-pad-inline) var(--ea-pad-inline);
++        max-width: var(--ea-detail-max-width);
++        margin-inline: auto;
++        padding-inline: var(--ea-detail-pad-mobile);
+     }
+     .ea-preview,
+     .ea-detail {
+@@ -241,7 +242,7 @@
+         padding-bottom: var(--ea-space-xl);
+     }
+     .ea-content--detail .ea-section .ea-container {
+-        padding: 0 var(--ea-pad-inline) clamp(2.5rem, 7vw, 3rem);
++        padding: 0 var(--ea-detail-pad-mobile) clamp(2.5rem, 7vw, 3rem);
+     }
+     .ea-section--open .ea-container {
+         min-height: auto;
+@@ -268,6 +269,10 @@
+     }
+     .ea-content--detail .ea-section {
+         padding-inline-start: calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap));
++        max-width: var(--ea-detail-max-width);
++    }
++    .ea-content--detail .ea-section .ea-container {
++        width: min(var(--ea-detail-max-width), calc(100% - calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap))));
+     }
+ }
+ 
+diff --git a/assets/css/tokens/ea.tokens.css b/assets/css/tokens/ea.tokens.css
+index b595993..f2273de 100644
+--- a/assets/css/tokens/ea.tokens.css
++++ b/assets/css/tokens/ea.tokens.css
+@@ -38,6 +38,8 @@
+     --ea-content-offset-left: calc(var(--ea-progress-nav-width) + clamp(1rem, 4vw, 3rem));
+     --ea-axis-desktop-gap: clamp(1rem, 3vw, 4rem);
+     --ea-detail-padding-inline: clamp(2rem, 6vw, 7rem);
++    --ea-detail-pad-mobile: clamp(1rem, 4vw, 2.2rem);
++    --ea-detail-max-width: min(78rem, 92vw);
+     --ea-container-max: var(--ea-content-wide);
+     --ea-layout-max: var(--ea-container-max);
+     --ea-max-width: var(--ea-layout-max); /* legacy alias */
+diff --git a/assets/css/ui/ux-layer.css b/assets/css/ui/ux-layer.css
+index fd240a2..94b13a1 100644
+--- a/assets/css/ui/ux-layer.css
++++ b/assets/css/ui/ux-layer.css
+@@ -111,6 +111,15 @@
+ .ea-content--detail .ux-stack,
+ .ea-content--detail .ux-block {
+     padding-inline: var(--ea-detail-padding-inline);
++    max-width: var(--ea-detail-max-width);
++    margin-inline: auto;
++}
++
++.ux-overview-btn,
++.ea-detail-back-btn {
++    display: inline-flex;
++    margin-bottom: var(--ea-space-lg);
++    max-width: fit-content !important;
+ }
+ 
+ .ux-highlight {

@@ -1,0 +1,14 @@
+{
+  "sprint": "11E",
+  "checks": [
+    "Desktop détail : vérifier que le contenu est plus large mais toujours left-aligned, centré via margin-auto, sans empiéter sur le progress-nav.",
+    "Mobile détail (<700px) : padding inline réduit via --ea-detail-pad-mobile, lecture moins en 'couloir'.",
+    "Bouton Overview/Back : inline-flex, max-width fit-content, margin-bottom appliqué, ne doit plus rétrécir le conteneur texte.",
+    "Préviews/scroll/menu/halos/router : aucun changement visuel/structurel."
+  ],
+  "scope": [
+    "assets/css/tokens/ea.tokens.css",
+    "assets/css/master/sections.master.css",
+    "assets/css/ui/ux-layer.css"
+  ]
+}

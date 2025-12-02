@@ -111,6 +111,15 @@
 .ea-content--detail .ux-stack,
 .ea-content--detail .ux-block {
     padding-inline: var(--ea-detail-padding-inline);
+    max-width: var(--ea-detail-max-width);
+    margin-inline: auto;
+}
+
+.ux-overview-btn,
+.ea-detail-back-btn {
+    display: inline-flex;
+    margin-bottom: var(--ea-space-lg);
+    max-width: fit-content !important;
 }
 
 .ux-highlight {

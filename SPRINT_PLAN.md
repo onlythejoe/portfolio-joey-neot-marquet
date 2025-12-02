@@ -58,3 +58,8 @@
 - Tokens d’espacement ajoutés (detail padding inline, axis desktop gap, pad top/bottom) pour respiration premium sans toucher au moteur. [✔️ DONE — 2025-12-02]
 - Detail recentré mais aligné à gauche, previews desktop éloignées du progress-nav, paddings verticaux harmonisés (sections/views). [✔️ DONE — 2025-12-02]
 - Livrables : SPACING_ISSUES.json, SPACING_DIFF.patch, SPRINT_11D_SPACING_REPORT.md. [✔️ DONE — 2025-12-02]
+
+**Sprint 11E — Detail Layout Rework**
+- Largeur desktop des détails élargie via token `--ea-detail-max-width`, padding mobile dédié, conteneurs centrés mais left-aligned. [✔️ DONE — 2025-12-02]
+- Bouton Overview/Back isolé (inline-flex, max-width fit-content, margin-bottom) pour ne plus réduire la grille; previews inchangées. [✔️ DONE — 2025-12-02]
+- Livrables : DETAIL_LAYOUT_ISSUES.json, DETAIL_LAYOUT_DIFF.patch, SPRINT_11E_DETAIL_LAYOUT_REPORT.md. [✔️ DONE — 2025-12-02]
