@@ -1,0 +1,139 @@
+diff --git a/SPRINT_PLAN.md b/SPRINT_PLAN.md
+index 4c5e751..eae32a7 100644
+--- a/SPRINT_PLAN.md
++++ b/SPRINT_PLAN.md
+@@ -53,3 +53,8 @@
+ - Axe vertical unique basé sur la sidebar (token `--ea-content-offset-left` appliqué aux sections, containers, stacks, grilles, previews/détails). [✔️ DONE — 2025-12-02]
+ - Alignement gauche harmonisé (text-align/align-items start) pour previews, détails, tags, CTA, blocs UX, grilles, avec largeur calculée vs progress-nav. [✔️ DONE — 2025-12-02]
+ - Livrables produits : ALIGNMENTS_AUDIT.json, ALIGNMENTS_DIFF.patch, SPRINT_11C_ALIGNMENTS_REPORT.md. [✔️ DONE — 2025-12-02]
++
++**Sprint 11D — Spacing & Breathing Final Pass**
++- Tokens d’espacement ajoutés (detail padding inline, axis desktop gap, pad top/bottom) pour respiration premium sans toucher au moteur. [✔️ DONE — 2025-12-02]
++- Detail recentré mais aligné à gauche, previews desktop éloignées du progress-nav, paddings verticaux harmonisés (sections/views). [✔️ DONE — 2025-12-02]
++- Livrables : SPACING_ISSUES.json, SPACING_DIFF.patch, SPRINT_11D_SPACING_REPORT.md. [✔️ DONE — 2025-12-02]
+diff --git a/assets/css/master/sections.master.css b/assets/css/master/sections.master.css
+index fe47cc6..f49dd33 100644
+--- a/assets/css/master/sections.master.css
++++ b/assets/css/master/sections.master.css
+@@ -16,7 +16,8 @@
+     display:flex;
+     align-items:flex-start;
+     justify-content:center;
+-    padding-block: var(--ea-section-vspace);
++    padding-top: var(--ea-section-pad-top, var(--ea-section-vspace));
++    padding-bottom: var(--ea-section-pad-bottom, var(--ea-section-vspace));
+     padding-inline-start: var(--ea-content-offset-left);
+     padding-inline-end: var(--ea-pad-inline, var(--ea-pad));
+     scroll-snap-align:center;
+@@ -34,7 +35,10 @@
+     justify-content:center;
+     max-width: var(--ea-content-max);
+     margin-inline: auto;
+-    padding-inline: var(--ea-pad-inline);
++    padding-inline-start: 0;
++    padding-inline-end: var(--ea-pad-inline);
++    padding-top: var(--ea-section-pad-top);
++    padding-bottom: var(--ea-section-pad-bottom);
+     text-align: left;
+ }
+ 
+@@ -138,10 +142,10 @@
+     height:auto;
+     justify-content:flex-start;
+     align-items:flex-start;
+-    padding-top: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
+-    padding-bottom: clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9));
+-    padding-inline-start: var(--ea-content-offset-left);
+-    padding-inline-end: var(--ea-pad-inline);
++    padding-top: var(--ea-section-pad-top, clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9)));
++    padding-bottom: var(--ea-section-pad-bottom, clamp(var(--ea-space-xl), 8dvh, calc(var(--ea-space-xxl) * .9)));
++    padding-inline: var(--ea-detail-padding-inline);
++    padding-inline-start: calc(var(--ea-content-offset-left) + 0px);
+ }
+ 
+ .ea-content--detail .ea-section .ea-container {
+@@ -152,7 +156,7 @@
+     width:100%;
+     margin-inline-start: 0;
+     margin-inline-end: auto;
+-    padding:0 var(--ea-pad-inline) clamp(var(--ea-space-lg), 5vw, var(--ea-space-xl));
++    padding:0 var(--ea-detail-padding-inline) clamp(var(--ea-space-lg), 5vw, var(--ea-space-xl));
+     width:min(var(--ea-content-wide), calc(100% - var(--ea-content-offset-left)));
+ }
+ 
+@@ -165,7 +169,7 @@
+     max-width: var(--ea-content-max);
+     margin-inline-start: 0;
+     margin-inline-end: auto;
+-    padding-inline: var(--ea-pad-inline);
++    padding-inline: var(--ea-detail-padding-inline);
+     text-align: left;
+ }
+ 
+@@ -201,7 +205,8 @@
+     }
+     .ea-section {
+         align-items: flex-start;
+-        padding-block: clamp(var(--ea-space-lg), 12dvh, var(--ea-section-vspace));
++        padding-top: clamp(var(--ea-space-lg), 12dvh, var(--ea-section-pad-top, var(--ea-section-vspace)));
++        padding-bottom: clamp(var(--ea-space-lg), 12dvh, var(--ea-section-pad-bottom, var(--ea-section-vspace)));
+         padding-inline-start: var(--ea-content-offset-left);
+         padding-inline-end: var(--ea-pad-inline);
+         scroll-snap-align: unset;
+@@ -254,6 +259,18 @@
+     }
+ }
+ 
++@media (min-width: var(--ea-bp-lg)) {
++    .ea-section {
++        padding-inline-start: calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap));
++    }
++    .ea-section > .ea-container {
++        width: min(var(--ea-content-wide, var(--ea-layout-max, 1200px)), calc(100% - calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap))));
++    }
++    .ea-content--detail .ea-section {
++        padding-inline-start: calc(var(--ea-content-offset-left) + var(--ea-axis-desktop-gap));
++    }
++}
++
+ @media (max-width: var(--ea-bp-sm)) {
+     #ea-page-content {
+         scroll-snap-type: none;
+diff --git a/assets/css/tokens/ea.tokens.css b/assets/css/tokens/ea.tokens.css
+index c47df05..b595993 100644
+--- a/assets/css/tokens/ea.tokens.css
++++ b/assets/css/tokens/ea.tokens.css
+@@ -36,6 +36,8 @@
+     --ea-content-wide: clamp(68ch, 86vw, 72rem);
+     --ea-progress-nav-width: clamp(60px, 5vw, 88px);
+     --ea-content-offset-left: calc(var(--ea-progress-nav-width) + clamp(1rem, 4vw, 3rem));
++    --ea-axis-desktop-gap: clamp(1rem, 3vw, 4rem);
++    --ea-detail-padding-inline: clamp(2rem, 6vw, 7rem);
+     --ea-container-max: var(--ea-content-wide);
+     --ea-layout-max: var(--ea-container-max);
+     --ea-max-width: var(--ea-layout-max); /* legacy alias */
+@@ -49,6 +51,8 @@
+     --ea-pad-inline: clamp(1rem, 4vw, 3rem);
+     --ea-pad-block: clamp(1.5rem, 6dvh, 3rem);
+     --ea-pad: var(--ea-pad-inline);
++    --ea-section-pad-top: clamp(3rem, 8vh, 9rem);
++    --ea-section-pad-bottom: clamp(3rem, 10vh, 11rem);
+     --ea-section-vspace: clamp(3rem, 12dvh, 6.5rem);
+     --ea-view-height: 80dvh;
+     --ea-grid-gap: clamp(1.25rem, 3vw, 2.5rem);
+diff --git a/assets/css/ui/ux-layer.css b/assets/css/ui/ux-layer.css
+index cfe39cf..fd240a2 100644
+--- a/assets/css/ui/ux-layer.css
++++ b/assets/css/ui/ux-layer.css
+@@ -108,6 +108,11 @@
+     text-align: left;
+ }
+ 
++.ea-content--detail .ux-stack,
++.ea-content--detail .ux-block {
++    padding-inline: var(--ea-detail-padding-inline);
++}
++
+ .ux-highlight {
+     padding: clamp(1.25rem, 3vw, var(--ea-space-lg));
+     border-radius: var(--ea-radius-lg);

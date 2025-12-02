@@ -108,6 +108,11 @@
     text-align: left;
 }
 
+.ea-content--detail .ux-stack,
+.ea-content--detail .ux-block {
+    padding-inline: var(--ea-detail-padding-inline);
+}
+
 .ux-highlight {
     padding: clamp(1.25rem, 3vw, var(--ea-space-lg));
     border-radius: var(--ea-radius-lg);

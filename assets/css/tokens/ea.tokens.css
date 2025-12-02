@@ -36,6 +36,8 @@
     --ea-content-wide: clamp(68ch, 86vw, 72rem);
     --ea-progress-nav-width: clamp(60px, 5vw, 88px);
     --ea-content-offset-left: calc(var(--ea-progress-nav-width) + clamp(1rem, 4vw, 3rem));
+    --ea-axis-desktop-gap: clamp(1rem, 3vw, 4rem);
+    --ea-detail-padding-inline: clamp(2rem, 6vw, 7rem);
     --ea-container-max: var(--ea-content-wide);
     --ea-layout-max: var(--ea-container-max);
     --ea-max-width: var(--ea-layout-max); /* legacy alias */
@@ -49,6 +51,8 @@
     --ea-pad-inline: clamp(1rem, 4vw, 3rem);
     --ea-pad-block: clamp(1.5rem, 6dvh, 3rem);
     --ea-pad: var(--ea-pad-inline);
+    --ea-section-pad-top: clamp(3rem, 8vh, 9rem);
+    --ea-section-pad-bottom: clamp(3rem, 10vh, 11rem);
     --ea-section-vspace: clamp(3rem, 12dvh, 6.5rem);
     --ea-view-height: 80dvh;
     --ea-grid-gap: clamp(1.25rem, 3vw, 2.5rem);

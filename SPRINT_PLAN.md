@@ -53,3 +53,8 @@
 - Axe vertical unique basé sur la sidebar (token `--ea-content-offset-left` appliqué aux sections, containers, stacks, grilles, previews/détails). [✔️ DONE — 2025-12-02]
 - Alignement gauche harmonisé (text-align/align-items start) pour previews, détails, tags, CTA, blocs UX, grilles, avec largeur calculée vs progress-nav. [✔️ DONE — 2025-12-02]
 - Livrables produits : ALIGNMENTS_AUDIT.json, ALIGNMENTS_DIFF.patch, SPRINT_11C_ALIGNMENTS_REPORT.md. [✔️ DONE — 2025-12-02]
+
+**Sprint 11D — Spacing & Breathing Final Pass**
+- Tokens d’espacement ajoutés (detail padding inline, axis desktop gap, pad top/bottom) pour respiration premium sans toucher au moteur. [✔️ DONE — 2025-12-02]
+- Detail recentré mais aligné à gauche, previews desktop éloignées du progress-nav, paddings verticaux harmonisés (sections/views). [✔️ DONE — 2025-12-02]
+- Livrables : SPACING_ISSUES.json, SPACING_DIFF.patch, SPRINT_11D_SPACING_REPORT.md. [✔️ DONE — 2025-12-02]
