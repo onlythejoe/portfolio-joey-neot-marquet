@@ -17,7 +17,7 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "sections": ["index.html, project-001", "project-002", "project-003"]
+    "sections": ["index, project-001", "project-002", "project-003"]
   },
   "vision": {
     "title": "Vision",
