@@ -1,14 +1,17 @@
 {
   "home": {
     "title": "Accueil",
+    "description": "Creative technologist : interfaces sensibles, micro-framework EA Lite et navigation continue sans dépendances.",
     "sections": ["hero", "intro"]
   },
   "about": {
     "title": "À propos",
+    "description": "Portrait de Joey-Néot Marquet, creative technologist hybride design × code × systèmes avec un parcours non linéaire.",
     "sections": ["bio", "skills", "vision"]
   },
   "expertises": {
     "title": "Expertises",
+    "description": "Architecture front, design system et prototypage court pour des expériences premium mesurables.",
     "sections": [
       "direction-artistique",
       "systems-engineering",
@@ -17,14 +20,17 @@
   },
   "portfolio": {
     "title": "Portfolio",
+    "description": "Études de cas EA Lite : navigation continue, micro-framework vanilla et design système appliqués à des projets réels.",
     "sections": ["project-001", "project-002", "project-003"]
   },
   "vision": {
     "title": "Vision",
+    "description": "Manifeste sur des interfaces vivantes et des systèmes sensibles mêlant technologie, esthétique et sens.",
     "sections": ["manifeste"]
   },
   "contact": {
     "title": "Contact",
+    "description": "Coordonnées pour collaborations premium mêlant design system, R&D et direction produit.",
     "sections": ["contact"]
   }
 }

@@ -25,9 +25,9 @@ async function load() {
     const detailSection = resolveSection();
     try {
         await injectGlobalComponents();
-        await composePage(page, detailSection, { signal });
+        const composition = await composePage(page, detailSection, { signal });
         if (signal.aborted) return;
-        window.dispatchEvent(new CustomEvent(EVENTS.pageLoaded, { detail: { page, section: detailSection } }));
+        window.dispatchEvent(new CustomEvent(EVENTS.pageLoaded, { detail: { page, section: detailSection, seo: composition?.seo } }));
         window.dispatchEvent(new CustomEvent("ea-analytics", { detail: { page, section: detailSection } }));
     } catch (err) {
         if (signal.aborted) return;
