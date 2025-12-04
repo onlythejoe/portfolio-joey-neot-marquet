@@ -4,6 +4,54 @@ import { SELECTORS, CLASSES } from "../core/constants.js";
 
 const sectionCache = new Map();
 
+function normalizeText(value) {
+    const trimmed = value?.trim();
+    return trimmed || undefined;
+}
+
+function sanitizeSeoPayload(payload) {
+    if (!payload || typeof payload !== "object") return null;
+
+    const title = normalizeText(payload.title);
+    const description = normalizeText(payload.description);
+    const image = normalizeText(payload.image);
+
+    if (!title && !description && !image) return null;
+    return { title, description, image };
+}
+
+function parseSeoJson(textContent) {
+    if (!textContent) return null;
+    try {
+        return sanitizeSeoPayload(JSON.parse(textContent));
+    } catch (err) {
+        console.warn("EA SEO: invalid JSON payload", err);
+        return null;
+    }
+}
+
+function extractSeoMetadata(container) {
+    const seoNode = container.querySelector("[data-ea-seo]");
+    if (seoNode) {
+        const rawContent = seoNode.tagName === "META"
+            ? seoNode.getAttribute("content")
+            : seoNode.textContent;
+        const fromJson = parseSeoJson(rawContent);
+        if (fromJson) return fromJson;
+    }
+
+    const datasetNode = container.querySelector("[data-ea-title],[data-ea-description],[data-ea-image]");
+    if (datasetNode) {
+        return sanitizeSeoPayload({
+            title: datasetNode.dataset.eaTitle,
+            description: datasetNode.dataset.eaDescription,
+            image: datasetNode.dataset.eaImage
+        });
+    }
+
+    return null;
+}
+
 function updateUrl(page, sectionId) {
     const url = new URL(window.location.href);
     url.searchParams.set("page", page);
@@ -112,7 +160,7 @@ export async function composePage(page, detailSection = null, options = {}) {
     if (!meta) {
         container.innerHTML = "<section class='ea-section'><h2>Page inconnue</h2></section>";
         container.removeAttribute("aria-busy");
-        return;
+        return null;
     }
 
     try {
@@ -132,5 +180,8 @@ export async function composePage(page, detailSection = null, options = {}) {
     const controller = createSectionController(container, page);
     controller.applySectionState(detailSection);
 
+    const seo = extractSeoMetadata(container);
+
     // Page composition complete; caller is responsible for dispatching lifecycle events.
+    return { controller, seo };
 }
