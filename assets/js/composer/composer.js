@@ -101,13 +101,17 @@ async function loadSection(page, section, signal) {
 export async function composePage(page, detailSection = null, options = {}) {
     const { signal } = options;
     const container = document.querySelector(SELECTORS.pageContent);
-    container.innerHTML = "<div class='ea-loading'>Chargement…</div>";
+    if (!container) return;
+
+    container.setAttribute("aria-busy", "true");
+    container.innerHTML = "<div class='ea-loading' role='status' aria-live='polite'>Chargement…</div>";
 
     const config = await loadPagesConfig();
     const meta = config[page];
 
     if (!meta) {
         container.innerHTML = "<section class='ea-section'><h2>Page inconnue</h2></section>";
+        container.removeAttribute("aria-busy");
         return;
     }
 
@@ -121,6 +125,8 @@ export async function composePage(page, detailSection = null, options = {}) {
         if (signal?.aborted) return;
         container.innerHTML = `<section class='ea-section'><div class='ea-container'><p>Erreur de chargement. Merci de réessayer.</p></div></section>`;
         throw err;
+    } finally {
+        container.removeAttribute("aria-busy");
     }
 
     const controller = createSectionController(container, page);
