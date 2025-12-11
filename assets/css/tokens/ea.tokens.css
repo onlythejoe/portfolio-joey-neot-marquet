@@ -48,7 +48,7 @@
     --ea-detail-mobile-pad-block: clamp(1.35rem, 4vw, 2.25rem);
     --ea-detail-mobile-gap: clamp(1rem, 3vw, 1.75rem);
     --ea-detail-mobile-card-pad: clamp(1rem, 3vw, 1.5rem);
-    --ea-detail-mobile-max: calc(100vw - (2 * var(--ea-detail-mobile-pad-inline)));
+    --ea-detail-mobile-max: min(calc(100vw - (2 * var(--ea-detail-mobile-pad-inline))), 96vw, 110ch);
     --ea-container-max: var(--ea-content-wide);
     --ea-layout-max: var(--ea-container-max);
     --ea-max-width: var(--ea-layout-max); /* legacy alias */

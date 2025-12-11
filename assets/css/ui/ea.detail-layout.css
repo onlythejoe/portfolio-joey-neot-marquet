@@ -107,7 +107,7 @@
 
 @media (max-width: var(--ea-bp-md)) {
     .ea-content--detail .ea-detail {
-        max-width: min(var(--ea-detail-mobile-max), var(--ea-detail-max-width));
+        max-width: var(--ea-detail-mobile-max);
         padding-inline: 0;
         padding-block: var(--ea-detail-mobile-pad-block);
         gap: var(--ea-detail-mobile-gap);
@@ -115,7 +115,7 @@
 
     .ea-content--detail .ea-detail-shell {
         width: 100%;
-        max-width: min(var(--ea-detail-mobile-max), var(--ea-detail-max-width));
+        max-width: var(--ea-detail-mobile-max);
         margin-inline: auto;
         padding: var(--ea-detail-mobile-pad-block) var(--ea-detail-mobile-pad-inline);
         border-radius: var(--ea-radius-lg);
@@ -134,6 +134,7 @@
         max-width: 100%;
         width: 100%;
         margin-inline: auto;
+        min-width: 0;
     }
 
     .ea-content--detail .ea-detail-card[data-layout="full"] {
@@ -173,6 +174,7 @@
         padding: 0;
         box-sizing: border-box;
         gap: var(--ea-detail-mobile-gap);
+        min-width: 0;
     }
 
     .ea-content--detail .ea-detail-panel,
@@ -188,5 +190,41 @@
         margin: 0 0 var(--ea-space-sm);
         padding: 0;
         justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: var(--ea-space-xs);
+    }
+
+    .ea-content--detail .ea-detail-card > .ux-block,
+    .ea-content--detail .ea-detail-card > .ux-highlight,
+    .ea-content--detail .ea-detail-card > .ux-note,
+    .ea-content--detail .ea-detail-card > .ux-quote,
+    .ea-content--detail .ea-detail-card > .ux-case-study {
+        padding: 0;
+        margin: 0;
+    }
+
+    .ea-content--detail .ux-case-study .ux-case-grid,
+    .ea-content--detail .ux-case-study .ux-gallery-slot,
+    .ea-content--detail .ux-section-group .ux-case-grid,
+    .ea-content--detail .ux-section-group .ux-grid-2,
+    .ea-content--detail .ux-section-group .ux-grid-3,
+    .ea-content--detail .ux-gallery-slot {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        grid-template-columns: 1fr;
+        gap: var(--ea-detail-mobile-gap);
+        min-width: 0;
+    }
+
+    .ea-content--detail .ux-tags {
+        flex-wrap: wrap;
+        min-width: 0;
+        row-gap: var(--ea-space-xs);
+    }
+
+    .ea-content--detail .ux-tag {
+        white-space: normal;
     }
 }
