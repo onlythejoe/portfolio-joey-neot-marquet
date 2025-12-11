@@ -10,6 +10,10 @@ export function getComponentUrl(path) {
     return resolveFromRoot("components/" + path);
 }
 
+export function getLayoutUrl(path) {
+    return resolveFromRoot("layout/" + path);
+}
+
 export function getPartialUrl(page, section) {
     return resolveFromRoot(`pages/${page}/${section}.html`);
 }

@@ -17,8 +17,20 @@ function resolvePage() {
 async function loadData() {
     if (dataPromise) return dataPromise;
     dataPromise = fetch(DATA_URL)
-        .then((res) => (res.ok ? res.json() : null))
-        .catch(() => null)
+        .then(async (res) => {
+            if (!res.ok) return null;
+            try {
+                const text = await res.text();
+                return JSON.parse(text);
+            } catch (err) {
+                console.warn("EA Halos: invalid palette JSON, using defaults", err);
+                return null;
+            }
+        })
+        .catch((err) => {
+            console.warn("EA Halos: failed to fetch palette", err);
+            return null;
+        })
         .then((json) => json || { default: DEFAULT_PALETTE, pages: [] });
     return dataPromise;
 }

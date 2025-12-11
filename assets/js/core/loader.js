@@ -5,6 +5,7 @@ import "./progress-nav.js";
 import "./scroll-engine.js";
 import "./menu.js";
 import "./seo.js";
+import "./detail-ux.js";
 
 function resolvePage() {
     return new URLSearchParams(window.location.search).get("page") || "home";

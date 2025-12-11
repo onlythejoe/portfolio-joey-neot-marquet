@@ -18,7 +18,7 @@
     --ea-alpha-20: .2;
 
     /* TYPOGRAPHY */
-    --ea-font-main: 'Inter', sans-serif;
+    --ea-font-main: 'Inter', 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --ea-font-size-sm: clamp(.85rem, .6vw + .82rem, .95rem);
     --ea-font-size-md: clamp(1rem, .5vw + .95rem, 1.15rem);
     --ea-font-size-lg: clamp(1.25rem, 1vw + 1.05rem, 1.8rem);
@@ -33,13 +33,17 @@
 
     /* LAYOUT */
     --ea-content-max: clamp(60ch, 80vw, 90ch);
+    --ea-content-max-detail: clamp(82ch, 88vw, 110ch);
     --ea-content-wide: clamp(68ch, 86vw, 72rem);
     --ea-progress-nav-width: clamp(60px, 5vw, 88px);
-    --ea-content-offset-left: calc(var(--ea-progress-nav-width) + clamp(1rem, 4vw, 3rem));
-    --ea-axis-desktop-gap: clamp(1rem, 3vw, 4rem);
-    --ea-detail-padding-inline: clamp(2rem, 6vw, 7rem);
-    --ea-detail-pad-mobile: clamp(1rem, 4vw, 2.2rem);
-    --ea-detail-max-width: min(78rem, 92vw);
+    --ea-content-offset-left: calc(var(--ea-progress-nav-width) + clamp(0.5rem, 2vw, 2rem));
+    --ea-axis-desktop-gap: clamp(0.75rem, 2vw, 2.5rem);
+    --ea-axis-desktop-gap-active: clamp(0rem, 1vw, 1.5rem);
+    --ea-detail-padding-inline: clamp(1.5rem, 3vw, 2.75rem);
+    --ea-detail-pad-mobile: clamp(1.1rem, 4vw, 1.6rem);
+    --ea-detail-max-width: min(88vw, 110ch);
+    --ea-detail-grid-gap: clamp(1.35rem, 2.2vw, 2.5rem);
+    --ea-detail-grid-col-min: clamp(20rem, 24vw, 26rem);
     --ea-container-max: var(--ea-content-wide);
     --ea-layout-max: var(--ea-container-max);
     --ea-max-width: var(--ea-layout-max); /* legacy alias */
