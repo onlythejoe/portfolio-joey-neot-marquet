@@ -98,6 +98,13 @@
     line-height: var(--ea-leading-md);
 }
 
+.ea-detail img,
+.ea-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 @media (max-width: var(--ea-bp-md)) {
     .ea-content--detail .ea-detail {
         padding-inline: clamp(1rem, 5vw, 1.5rem);
@@ -108,5 +115,102 @@
     }
     .ea-detail-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .ea-content--detail,
+    .ea-detail,
+    .ea-detail-shell,
+    .ea-detail-body,
+    .ea-detail-panel,
+    .ea-detail-grid,
+    .ea-detail-columns,
+    .ea-panel-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .ea-detail {
+        width: 100% !important;
+        padding-inline: var(--ea-space-lg) !important;
+        display: flex;
+        flex-direction: column;
+        gap: var(--ea-space-md);
+        overflow-x: hidden !important;
+    }
+
+    .ea-detail > * {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-inline: 0 !important;
+    }
+
+    .ea-detail-shell,
+    .ea-detail-body,
+    .ea-detail-panel,
+    .ea-detail-grid,
+    .ea-detail-columns,
+    .ea-detail-metrics {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-inline: 0 !important;
+    }
+
+    .ea-card,
+    .ea-detail-card,
+    .ea-note,
+    .ea-highlight {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-inline: var(--ea-space-md) !important;
+    }
+
+    .ea-detail-header-actions {
+        position: static !important;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: var(--ea-space-md);
+    }
+
+    .ea-grid,
+    .ea-detail-grid,
+    .ea-panel-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    .ea-detail-columns {
+        grid-template-columns: 1fr !important;
+        gap: var(--ea-space-md);
+    }
+
+    .ea-detail-metrics {
+        grid-template-columns: 1fr;
+        gap: var(--ea-space-sm);
+    }
+
+    .ea-content--detail .ux-tags {
+        white-space: normal;
+        row-gap: var(--ea-space-xs);
+    }
+
+    .ux-tags {
+        white-space: normal !important;
+        flex-wrap: wrap !important;
+    }
+
+    .ea-detail-header-actions button,
+    .ea-detail-header-actions a {
+        max-width: 100%;
+        padding-inline: var(--ea-space-sm);
+        white-space: nowrap;
+    }
+
+    .ea-detail * {
+        max-width: 100% !important;
+        box-sizing: border-box;
     }
 }
