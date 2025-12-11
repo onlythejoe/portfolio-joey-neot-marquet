@@ -266,7 +266,7 @@
         padding-top: clamp(4vw, 8vw, 12vw);
         padding-bottom: clamp(4vw, 8vw, 12vw);
         max-width: 100vw;
-        padding-inline: var(--ea-detail-pad-mobile);
+        padding-inline: var(--ea-detail-mobile-pad-inline);
     }
     .ea-content--detail .ea-section .ea-container {
         max-width: 100%;
